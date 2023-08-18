@@ -1,0 +1,51 @@
+/* home.css */
+*{
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-end;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.background-triangles{
+    background-image: url('../assets/background-triangles.png');
+    background-size: contain;
+    position: fixed;
+    z-index: 1;
+    background-repeat: no-repeat;
+    height: 1080px;
+    width: 1280px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.scrollable-background{
+    position: absolute;
+    background-image: url('../assets/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 200%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    width: 1080px;
+    text-align: center;
+}

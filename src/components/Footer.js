@@ -1,0 +1,1 @@
+//contains the implementation of the footer component
