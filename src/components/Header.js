@@ -1,36 +1,52 @@
-//Implementation of the header component that can be reused in other components
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import logoImage from '../assets/WhiteTD.png';
 import '../components/header.css';
-import 'bootstrap'; // Import Bootstrap CSS
+import 'bootstrap';
 
 function Header() {
+  const location = useLocation(); // Get the current location
+  const [reloadLinks, setReloadLinks] = useState([]); // Maintain a list of links that have been reloaded
+
+  const handleLinkClick = (path) => {
+    if (location.pathname === path && !reloadLinks.includes(path)) {
+      setReloadLinks((prevLinks) => [...prevLinks, path]);
+      window.location.reload();
+    }
+  };
+
   return (
     <div>
-      <nav className="navbar" style={{margin: 0, padding: 0}}>
+      <nav className="navbar" style={{ margin: 0, padding: 0 }}>
         <div className="container">
-            <Link to="/" className="navbar-brand">
-                <img src={logoImage} alt="Logo" width="auto" height="auto" className="d-inline-block align-top" />
-            </Link>
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link to="/" className="nav-link">Home</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/about" className="nav-link">About</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/support" className="nav-link">Support</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/contact" className="nav-link">Contact Us</Link>
-              </li>
-            </ul>
-            <form className="d-flex ml-auto">
-                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-
-            </form>
+          <Link to="/" className="navbar-brand" onClick={() => handleLinkClick('/')}> 
+            <img src={logoImage} alt="Logo" width="auto" height="auto" className="d-inline-block align-top" />
+          </Link>
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link to="/" className="nav-link" onClick={() => handleLinkClick('/')}>
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/about" className="nav-link" onClick={() => handleLinkClick('/about')}>
+                About
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/support" className="nav-link" onClick={() => handleLinkClick('/support')}>
+                Support
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/contact" className="nav-link" onClick={() => handleLinkClick('/contact')}>
+                Contact Us
+              </Link>
+            </li>
+          </ul>
+          <form className="d-flex ml-auto">
+            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+          </form>
         </div>
       </nav>
     </div>

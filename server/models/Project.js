@@ -1,1 +1,0 @@
-//represents model/schema for a project

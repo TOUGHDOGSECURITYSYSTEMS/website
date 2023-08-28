@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About'; // Import your About component
-import Products from './pages/Products'; // Import your Products component
-import Support from './pages/Support'; // Import your Support component
-import ContactUs from './pages/ContactUs'; // Import your ContactUs component
-import Events from './pages/Events'; // Import your Events component
-import NotFound from './pages/NotFound';
+import Home from './assets/javascripts/Home';
+import About from './assets/javascripts/About'; // Import your About component
+import Products from './assets/javascripts/Products'; // Import your Products component
+import Support from './assets/javascripts/Support'; // Import your Support component
+import ContactUs from './assets/javascripts/ContactUs'; // Import your ContactUs component
+import Events from './assets/javascripts/Events'; // Import your Events component
+import NotFound from './assets/javascripts/NotFound';
 
 function App() {
   return (
