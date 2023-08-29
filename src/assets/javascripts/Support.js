@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header';
-import styles from '../stylings/support.css';
 import axios from 'axios';
 
 async function getData(id) {
