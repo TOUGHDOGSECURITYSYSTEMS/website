@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import logoImage from '../assets/WhiteTD.png';
-import '../components/header.css';
+import logoImage from '../assets/images/WhiteTD.png';
+import './header.css';
 import 'bootstrap';
 
 function Header() {
@@ -16,8 +16,8 @@ function Header() {
   };
 
   return (
-    <div>
-      <nav className="navbar" style={{ margin: 0, padding: 0 }}>
+    <div className='header'>
+      <nav className="header-navbar navbar" style={{ margin: 0, padding: 0 }}>
         <div className="container">
           <Link to="/" className="navbar-brand" onClick={() => handleLinkClick('/')}> 
             <img src={logoImage} alt="Logo" width="auto" height="auto" className="d-inline-block align-top" />

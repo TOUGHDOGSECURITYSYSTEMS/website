@@ -1,0 +1,21 @@
+body, html {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    min-width: 980px;
+}
+
+
+.footer{
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    min-width: 980px;
+    height: 636px;
+}
+
+.home-container{
+    width: 100%;
+    min-width: 980px;
+    
+}

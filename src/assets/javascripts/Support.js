@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 import axios from 'axios';
+import '../stylings/support.css'
 
 async function getData(id) {
   try {
@@ -57,7 +59,9 @@ function Support() {
 
   return (
     <div>
-      <Header />
+      <div>
+        <Header/>
+      </div>
       <div className="container-fluid mt-0">
         <h1>Customer Support</h1>
         <p>{buttonData.question}</p>
@@ -83,6 +87,9 @@ function Support() {
             Back
           </button>
         </div>
+      </div>
+      <div>
+        <Footer/>
       </div>
     </div>
   );
