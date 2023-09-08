@@ -18,7 +18,7 @@ function Header() {
   return (
     <div className='header'>
       <nav className="header-navbar navbar" style={{ margin: 0, padding: 0 }}>
-        <div className="container">
+        <div className="container ml-0">
           <Link to="/" className="navbar-brand" onClick={() => handleLinkClick('/')}> 
             <img src={logoImage} alt="Logo" width="auto" height="auto" className="d-inline-block align-top" />
           </Link>
