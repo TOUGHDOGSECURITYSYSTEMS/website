@@ -6,11 +6,13 @@ import Products from './assets/javascripts/Products'; // Import your Products co
 import Support from './assets/javascripts/Support'; // Import your Support component
 import ContactUs from './assets/javascripts/ContactUs'; // Import your ContactUs component
 import Events from './assets/javascripts/Events'; // Import your Events component
-import NotFound from './assets/javascripts/NotFound';
+//import NotFound from './assets/javascripts/NotFound';
+import ScrollToTopOnReload from './components/onPageComponents';
 
 function App() {
   return (
     <Router>
+      <ScrollToTopOnReload/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} /> {/* Add About route */}

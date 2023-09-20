@@ -1,5 +1,38 @@
+@import '~@fontsource/barlow/200';
 @import '~@fontsource-variable/oswald';
 
+/* CSS animations for fading in and sliding */
+@keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Add these classes to your elements for animations */
+  .fadeInRight {
+    animation: fadeInRight 5s ease forwards;
+  }
+  
+  .fadeInLeft {
+    animation: fadeInLeft 5s ease forwards;
+  }
+  
 
 body, html {
     width: 100%;
@@ -8,8 +41,10 @@ body, html {
     min-width: 980px;
 }
 
+
+
 .home-page{
-    align-items: start;
+    align-items: flex-start;
     display: flex;
     flex-direction: column;
     justify-content: stretch;
@@ -21,6 +56,7 @@ body, html {
 
 .header{
     position: relative;
+    min-width: 980px;
 }
 
 
@@ -169,10 +205,221 @@ body, html {
     display: flex;
     position: relative;
     grid-area: 2 / 1 / 3 / 2;
-    justify-self: start;
-    align-self: start;
+    justify-self: flex-start;
+    align-self: flex-start;
 }
 
 .intro-column{
+    left: 0;
+    margin-left: 0;
+    width: inherit;
+    grid-area: 2 / 1 / 3 / 2;
+    justify-self: flex-start;
+    align-self: flex-start;
+    flex-direction: row;
+    margin: 0 auto;
+    height: 100%;
+    position: absolute;
+    min-height: 986px;
+}
 
+.intro-container{
+    max-width: inherit;
+    height: 986px;
+}
+
+.intro-column::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+    z-index: 0; /* Adjust the z-index to control the overlay's position */
+}
+
+.rawintro-video{
+    opacity: 1;
+    object-fit: cover;
+    object-position: center center;
+    height: 986px;
+    width: 100%;
+    z-index: auto;
+}
+
+.desc-container{
+    position: static;
+    display: grid;
+    height: auto;
+    min-height: 986px;
+    width: 100%;
+    grid-template-rows: 1fr;
+    grid-template-columns: 100%;
+}
+
+.desc-content{
+    width: 819px;
+    position: relative;
+    margin: 221px 0px 10px 0px;
+    left: 53px;
+    grid-area: 1 / 1 / 2 / 2;
+    justify-self:flex-start;
+    align-self: flex-start;
+}
+
+.desc{
+    position: static;
+    display: grid;
+    height: auto;
+    width: 100%;
+    min-height: auto;
+    grid-template-rows: repeat(3, min-content) 1fr;
+    grid-template-columns: 100%;
+}
+
+.whitelogo{
+    visibility: inherit;
+    width: 87px;
+    height: 86px;
+    position: relative;
+    margin: 0px 0px 10px 0px;
+    grid-area: 1 / 1 / 2 / 2;
+    justify-self: flex-start;
+    align-self: flex-start;
+}
+
+.big-text{
+    visibility: inherit;
+    height: auto;
+    width: 819px;
+    position: relative;
+    margin: 0px 0px 30px 0px;
+    grid-area: 2 / 1 / 3 / 2;
+    justify-self: flex-start;
+    align-self: flex-start;
+    text-align: left;
+}
+
+.bigtext-style{
+    font-size: 52px;
+    line-height: 1.1em;
+    letter-spacing: 0.05em;
+    color: rgb(255, 254, 254);
+    vertical-align: baseline;
+    font-family: 'Oswald Variable', sans-serif;
+}
+
+.small-text{
+    visibility: inherit;
+    height: auto;
+    width: 694px;
+    position: relative;
+    margin: 0px 0px 30px 0px;
+    grid-area: 3 / 1 / 4 / 2;
+    justify-self: flex-start;
+    align-self: flex-start;   
+}
+
+.smalltext-style{
+    font-family: 'Oswald Variable', sans-serif;
+    font-weight: 200;
+    vertical-align: baseline;
+    letter-spacing: 0.05em;
+    font-size: 22px;
+    color: rgb(255, 254, 254);
+    line-height: 1.4em;
+}
+
+.getstarted-container{
+    visibility: inherit;
+    width: 560px;
+    height: 40px;
+    position: relative;
+    margin: 0px;
+    grid-area: 4 / 1 / 5 / 2;
+    justify-self: flex-start;
+    align-self: flex-start;
+}
+
+.getstarted-link{
+    transition: all 0.2s ease, visibility 0s;
+    padding: 3px;
+    border-radius: 50px;
+    border: 0px solid rgb(63, 118, 82);
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+    min-height: 10px;
+    min-width: 10px;
+}
+
+.getstarted-button{
+    transition: inherit;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.getstarted-button .text{
+    transition: inherit;
+    font-weight: normal;
+    font-style: normal;
+    font-family: 'Oswald Variable', sans-serif;
+    font-weight: 500;
+    line-height: unset;
+    letter-spacing: 0.3em;
+    font-size: 20px;
+    color: #FFFEFE;
+    max-width: 100%;
+    min-width: 1.8em;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.getstarted-button:hover .text{
+    letter-spacing: 0.2em;
+}
+
+.getstarted-button:hover .getstartedarrow-svg{
+    fill: red;
+}
+.getstarted-arrow{
+    transition: inherit;
+    width: 61px;
+    height: 61px;
+    fill: #FFFEFE;
+    flex-shrink: 0;
+    min-width: 1px;
+    vertical-align: baseline;
+}
+
+.getstartedarrow-svg{
+    display: flex;
+    height: inherit;
+    width: inherit;
+    overflow: hidden;
+}
+
+.newproducts-container{
+    padding-top: 60px;
+    min-width: 980px;
+    width: 100%;
+    position: relative;
+    grid-area: 4 / 1 / 5 / 2;
+}
+
+.newproductsraw-video{
+    opacity: 1;
+    object-fit: cover;
+    object-position: center center;
+    height: 235.8px;
+    min-width: 980px;
+    width: 100%;
+    z-index: auto;
 }
