@@ -1,7 +1,7 @@
 @import '~@fontsource/barlow/200';
 @import '~@fontsource-variable/oswald';
 
-/* CSS animations for fading in and sliding */
+
 @keyframes fadeInRight {
     from {
       opacity: 0;
@@ -11,9 +11,9 @@
       opacity: 1;
       transform: translateX(0);
     }
-  }
+}
   
-  @keyframes fadeInLeft {
+@keyframes fadeInLeft {
     from {
       opacity: 0;
       transform: translateX(-20px);
@@ -22,16 +22,15 @@
       opacity: 1;
       transform: translateX(0);
     }
-  }
+}
   
-  /* Add these classes to your elements for animations */
-  .fadeInRight {
+.fadeInRight {
     animation: fadeInRight 5s ease forwards;
-  }
+}
   
-  .fadeInLeft {
+.fadeInLeft {
     animation: fadeInLeft 5s ease forwards;
-  }
+}
   
 
 body, html {

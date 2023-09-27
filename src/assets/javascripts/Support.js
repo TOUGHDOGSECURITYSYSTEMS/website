@@ -1,96 +1,237 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import axios from 'axios';
+import techSupportbackground from '../images/techsupportbackgroundimg.png'
+import techSupportlogo from '../images/techsupportlogo.png'
 import '../stylings/support.css'
+import { Link } from 'react-router-dom';
 
-async function getData(id) {
-  try {
-    const response = await axios.get(`http://localhost:5000/api/entry/${id}`);
-    return response.data; // Return the data from the response
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    return null; // Return null in case of an error
-  }
-}
 
 function Support() {
-  const [buttonData, setButtonData] = useState([]);
-  const [buttonHistory, setButtonHistory] = useState([]); // Maintain history of buttonData states
-
-  useEffect(() => {
-    // Fetch data and initialize buttonData state
-    async function fetchData() {
-      const data = await getData(1); // Assuming ID 1 for initial state
-      if (data !== null) {
-        setButtonData(data[0]);
-        setButtonHistory([data[0]]);
-      }
-    }
-    fetchData();
-  }, []); // Empty array ensure effect runs once
-
-  // Function to handle button click
-  function handleButtonClick(buttonIndex, nextIDs) {
-    async function fetchData(id) {
-      const data = await getData(nextIDs[buttonIndex]);
-      if (data !== null) {
-        setButtonData(data[0]);
-        setButtonHistory(prevHistory => [...prevHistory, data[0]]);
-      }
-    }
-    fetchData();
-  }
-
-  // Function to reset to original data
-  function handleReset() {
-    setButtonData(buttonHistory[0]);
-    setButtonHistory([buttonHistory[0]]);
-  }
-
-  // Function to go back to the previous state
-  function handleBack() {
-    if (buttonHistory.length > 1) {
-      const previousState = buttonHistory[buttonHistory.length - 2];
-      setButtonData(previousState);
-      setButtonHistory(prevHistory => prevHistory.slice(0, -1));
-    }
-  }
 
   return (
-    <div>
-      <div>
-        <Header/>
-      </div>
-      <div className="container-fluid mt-0">
-        <h1>Customer Support</h1>
-        <p>{buttonData.question}</p>
-        <div className='d-flex justify-content-center'>
-          {buttonData.keywords &&
-            buttonData.keywords.map((text, buttonIndex) => (
-              <button
-                key={buttonIndex}
-                className="btn btn-danger m-2"
-                onClick={() => handleButtonClick(buttonIndex, buttonData.followup_id)}
-                data-nextids={buttonData.followup_id}
-                data-question={buttonData.question}
-              >
-                {text}
-              </button>
-            ))}
+    <div className='support-container'>
+      <Header/>
+      <div className='techsupport-body'>
+        <div className='techsupport-container'>
+          <div className='techsupport-img'>
+            <div className='whitefilter'></div>    
+            <img src={techSupportbackground} alt='Tech Support' style={{minWidth: '980px', height: '550px', width: '100%'}}></img>
+          </div>
+          <div className='techsupport-content fadeInRight'>
+            <div className='techsupport-title'><h1>TECH SUPPORT</h1></div>
+            <div className='techsupport-slogan'>
+              <h1>We are working on providing the most timely and best service to all customers.</h1>
+            </div>
+
+            <div className='logo-container'>
+              <div className='techsupport-logo'>
+                <img src={techSupportlogo}></img>
+              </div>
+            </div>
+            
+            <div className='techid-form'>
+              <Link className='techid-link' to='/login'>
+                <div className='techidbutton-container'>
+                  <span className='techidbutton-text'>HAVING TROUBLE? CLICK HERE!</span>
+                  <span className='techidbutton-svg'>
+                    <div>
+                      <svg data-bbox="9 70.9 181 59" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                        <g>
+                          <path d="M159 70.9l-2.2 2.4L183.6 99H9v3h174.6l-26.2 25.3 2.1 2.6 30.5-29.3-31-29.7z" style={{fill: 'red'}}></path>
+                        </g>
+                      </svg>
+                    </div>
+
+                  </span>
+
+                </div>
+              
+              </Link>
+
+            </div>
+          </div>
+
         </div>
-        <div className='d-flex justify-content-center'>
-          <button className='btn btn-dark m-2 width=100px' onClick={handleReset}>
-            Reset
-          </button>
-          <button className="btn btn-dark m-2" onClick={handleBack}>
-            Back
-          </button>
+        <div className='techresources-container'>
+          <div className='techresources-buttons'>
+            <div className='techresources-rows fadeInRight'>
+              <div className='button archive-button' style={{height: '303px', width: '271px'}}>
+              <Link to='' className='techresources-link'>
+                <div className='card custom-gradient-bg border-top-0 shadow-lg' style={{height: '303px', width: '271px', backgroundColor: 'rgb()'}}>
+                  <div className='buttonborder border-top border-2 border-white'></div>
+                  <div className='card-body d-flex justify-content-center align-items-center p-0'>
+                    <div className='text-container'>
+                      <h1>ARCHIVE</h1>
+                      <span className='techresources-arrow'>
+                        <div>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-bbox="9 70.9 181 59">
+                            <g>
+                              <path d="M159 70.9l-2.2 2.4L183.6 99H9v3h174.6l-26.2 25.3 2.1 2.6 30.5-29.3-31-29.7z">
+
+                              </path>
+                            </g>
+                          </svg>
+                        </div>
+                      </span>
+
+
+                    </div>
+                  </div>
+                </div>
+              </Link>
+              </div>
+              <div className='button tutorial-button' style={{height: '303px', width: '293px'}}>
+              <Link to='' className='techresources-link'>
+                <div className='card custom-gradient-bg border-top-0 shadow-lg' style={{height: '303px', width: '293px'}}>
+                  <div className='buttonborder border-top border-2 border-white'></div>
+                  <div className='card-body d-flex justify-content-center align-items-center p-0'>
+                    <div className='text-container'>
+                      <h1>TUTORIAL</h1>
+                      <span className='techresources-arrow'>
+                        <div>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-bbox="9 70.9 181 59">
+                            <g>
+                              <path d="M159 70.9l-2.2 2.4L183.6 99H9v3h174.6l-26.2 25.3 2.1 2.6 30.5-29.3-31-29.7z">
+
+                              </path>
+                            </g>
+                          </svg>
+                        </div>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+              </div>
+              <div className='button manuals-button' style={{height: '303px', width: '271px'}}>
+
+              <Link to='' className='techresources-link'>
+                <div className='card custom-gradient-bg border-top-0 shadow-lg' style={{height: '303px', width: '271px'}}>
+                  <div className='buttonborder border-top border-2 border-white'></div>
+                  <div className='card-body d-flex justify-content-center align-items-center p-0'>
+                    <div className='text-container'>
+                      <h1>MANUALS</h1>
+                      <span className='techresources-arrow'>
+                        <div>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-bbox="9 70.9 181 59">
+                            <g>
+                              <path d="M159 70.9l-2.2 2.4L183.6 99H9v3h174.6l-26.2 25.3 2.1 2.6 30.5-29.3-31-29.7z"></path>
+                            </g>
+                          </svg>
+                        </div>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+              </div>
+            </div>
+            <div className='techresources-rows fadeInRight'>
+              <div className='button diagrams-button' style={{height: '303px', width: '280px'}}>
+              <Link to='' className='techresources-link'>
+                <div className='card custom-gradient-bg border-top-0 shadow-lg' style={{height: '303px', width: '280px'}}>
+                  <div className='buttonborder border-top border-2 border-white'></div>
+                  <div className='card-body d-flex justify-content-center align-items-center p-0'>
+                    <div className='text-container'>
+                      <h1>DIAGRAMS</h1>
+                      <span className='techresources-arrow'>
+                        <div>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-bbox="9 70.9 181 59">
+                            <g>
+                              <path d="M159 70.9l-2.2 2.4L183.6 99H9v3h174.6l-26.2 25.3 2.1 2.6 30.5-29.3-31-29.7z">
+
+                              </path>
+                            </g>
+                          </svg>
+                        </div>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+              </div>
+              <div className='button software-button' style={{height: '303px', width: '586px'}}>
+              <Link to='' className='techresources-link'>
+                <div className='card custom-gradient-bg border-top-0 shadow-lg' style={{height: '303px', width: '586px'}}>
+                  <div className='buttonborder border-top border-2 border-white'></div>
+                  <div className='card-body d-flex justify-content-center align-items-center p-0'>
+                    <div className='text-container'>
+                      <h1>SOFTWARE DOWNLOADS</h1>
+                      <span className='techresources-arrow'>
+                        <div>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-bbox="9 70.9 181 59">
+                            <g>
+                              <path d="M159 70.9l-2.2 2.4L183.6 99H9v3h174.6l-26.2 25.3 2.1 2.6 30.5-29.3-31-29.7z">
+
+                              </path>
+                            </g>
+                          </svg>
+                        </div>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+              </div>
+            </div>
+            <div className='techresources-rows fadeInRight'>
+              <div className='button presentations-button' style={{height: '303px', width: '393px'}}>
+              <Link to='' className='techresources-link'>
+                <div className='card custom-gradient-bg border-top-0 shadow-lg' style={{minHeight: '303px', width: '393px'}}>
+                  <div className='buttonborder border-top border-2 border-white'></div>
+                  <div className='card-body d-flex justify-content-center align-items-center p-0'>
+                    <div className='text-container'>
+                      <h1>PRESENTATIONS</h1>
+                      <span className='techresources-arrow'>
+                        <div>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-bbox="9 70.9 181 59">
+                            <g>
+                              <path d="M159 70.9l-2.2 2.4L183.6 99H9v3h174.6l-26.2 25.3 2.1 2.6 30.5-29.3-31-29.7z">
+
+                              </path>
+                            </g>
+                          </svg>
+                        </div>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+              </div>
+              <div className='button marketing-button' style={{height: '303px', width: '327px'}}>
+              <Link to='' className='techresources-link'>
+                <div className='card custom-gradient-bg shadow-lg border-top-0 d-flex' style={{height: '303px', width: '327px'}}>
+                  <div className='buttonborder border-top border-2 border-white'></div>
+                  <div className='card-body d-flex justify-content-center align-items-center'>
+                    <div className='text-container'>
+                      <h1>MARKETING</h1>
+                      <span className='techresources-arrow'>
+                        <div>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-bbox="9 70.9 181 59">
+                            <g>
+                              <path d="M159 70.9l-2.2 2.4L183.6 99H9v3h174.6l-26.2 25.3 2.1 2.6 30.5-29.3-31-29.7z">
+
+                              </path>
+                            </g>
+                          </svg>
+                        </div>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+              </div>
+            </div>
+          </div>
+
         </div>
+
+        
+
       </div>
-      <div>
-        <Footer/>
-      </div>
+
+      <Footer/>
     </div>
   );
 }

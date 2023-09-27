@@ -7,6 +7,7 @@ import Support from './assets/javascripts/Support'; // Import your Support compo
 import ContactUs from './assets/javascripts/ContactUs'; // Import your ContactUs component
 import Events from './assets/javascripts/Events'; // Import your Events component
 //import NotFound from './assets/javascripts/NotFound';
+import Login from './assets/javascripts/Login'
 import ScrollToTopOnReload from './components/onPageComponents';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/support" element={<Support />} /> {/* Add Support route */}
         <Route path="/contact" element={<ContactUs />} /> {/* Add ContactUs route */}
         <Route path="/events" element={<Events />} /> {/* Add Events route */}
+        <Route path="/login" element={<Login />} /> {/* Add Login route */}
       </Routes>
     </Router>
   );

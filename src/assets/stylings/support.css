@@ -1,6 +1,335 @@
+@import '~@fontsource/barlow/200';
+@import '~@fontsource-variable/oswald';
+
+@keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+}
+  
+@keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+}
+  
+.fadeInRight {
+    animation: fadeInRight 5s ease forwards;
+}
+  
+.fadeInLeft {
+    animation: fadeInLeft 5s ease forwards;
+
+}
+
 body, html {
     width: 100%;
     margin: 0;
     padding: 0;
     min-width: 980px;
 }
+
+
+.techsupport-container{
+    display: flex;
+    position: relative;
+    width: 100%;
+    min-width: 980px;
+    grid-area: 59 / 1 / 60 / 2;
+    justify-self: flex-start;
+    align-self: flex-start;
+    height: 550px;
+}
+
+.techsupport-img{
+    position: absolute;
+    width: 100%;
+}
+
+.whitefilter{
+    position: absolute;
+    height: 550px;
+    width: 100%;
+    background-color: white;
+    opacity: .87;
+}
+
+.techsupport-content{
+    position: static;
+    display: grid;
+    height: auto;
+    width: 100%;
+    min-height: 500px;
+    grid-template-rows: repeat(5, min-content) 1fr;
+    grid-template-columns: 100%;
+    vertical-align: baseline;
+}
+
+.techsupport-title{
+    visibility: inherit;
+    height: auto;
+    width: 100%;
+    min-width: 981px;
+    position: relative;
+    margin: 70px 0px 16px 0px;
+    justify-self: flex-start;
+    align-self: flex-start;
+    text-align: left;
+    overflow-wrap: break-word;
+}
+
+.techsupport-title h1{
+    font-size: 40px;
+    line-height: 1.3em;
+    font-family: 'Oswald Variable', sans-serif;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+    text-align: center;
+}
+
+.techsupport-slogan{
+    visibility: inherit;
+    height: auto;
+    min-width: 981px;
+    width: 100%;
+    position: relative;
+    margin: 0px 0px 45px 0px;
+    grid-area: 2 / 1 / 3 / 2;
+    justify-self: flex-start;
+    align-self: flex-start;
+    text-align:left;
+}
+
+.techsupport-slogan h1{
+    text-align: center;
+    font-family: 'Oswald Variable', sans-serif;
+    letter-spacing: 0em;
+    font-size: 29px;
+    font-weight: 100;   
+}
+
+.logo-container{
+    display: flex;
+    justify-content: center;
+}
+
+.techsupport-logo{
+    visibility: inherit;
+    width: 357px;
+    height: 204px;
+    position: relative;
+    margin: 0px 0px 34px 0px;
+}
+
+.techsupport-techid{
+    visibility: inherit;
+    height: auto;
+    min-width: 919px;
+    width: 100%;
+    position: relative;
+    grid-area: 4 / 1 / 5 / 2;
+    justify-self: flex-start;
+    align-self: flex-start;
+    text-align: left;
+}
+
+.techsupport-techid h1{
+    text-align: center;
+    font-family: 'Oswald Variable', sans-serif;
+    font-weight: 100;
+    line-height: 1.4em;
+    font-size: 31px;
+}
+
+.techsupport-techidtext{
+    width: 100%;
+    min-width: 919px;
+    position: relative;
+    margin: 0px 0px 24px 0px;
+    text-align: left;
+}
+
+.techsupport-techidtext h1{
+    text-align: center;
+    font-family: 'Oswald Variable', sans-serif;
+    font-weight: 100;
+    line-height: 1.4em;
+    font-size: 21px;
+}
+
+.techid-form{
+    width: 833px;
+    height: 53px;
+    margin: 0px 0px 10px 0px;
+    justify-self: center;
+    visibility: inherit;
+    position: relative;
+}
+
+.techid-link{
+    transition: all 0.2s ease, visibility 0s;
+    padding: 3px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.22);
+    border: 3px solid gray;
+    text-decoration: none;
+    height: 100%;
+    cursor: pointer;
+    min-height: 10px;
+    min-width: 10px;
+    touch-action: manipulation;
+    display: block;
+}
+
+.techid-link:hover .techidbutton-text{
+    letter-spacing: 0.02em;
+    font-weight: 600;
+}
+
+.techid-link:hover .techidbutton-svg{
+    transform: scaleX(1.2);
+}
+
+
+
+.techidbutton-container{
+    transition: inherit;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+
+.techidbutton-text{
+    transition: inherit;
+    font-weight: 500;
+    font-style: normal;
+    font-family: 'Oswald Variable', sans-serif;
+    color: red;
+    line-height: unset;
+    letter-spacing: 0.2em;
+    margin: 0px 2px 0px 0px;
+    font-size: 25px;
+    max-width: 100%;
+    min-width: 1.8em;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.techidbutton-svg{
+    transition: inherit;
+    width: 31px;
+    height: 31px;
+    margin: 0px 0px 0px 2px;
+}
+
+
+.techresources-container{
+    min-width: 980px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-self: flex-start;
+    align-self: flex-start;
+}
+
+.techresources-buttons{
+    position: static;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(224, 224, 224);
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.techresources-rows{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    padding-bottom: 50px;
+}
+
+.button:hover .custom-gradient-bg{
+    background: linear-gradient(to bottom, #ACACAC, #BCBCBC);
+}
+
+.button:hover .buttonborder{
+    border-color: #BCBCBC !important;
+}
+
+.button:hover h1{
+    letter-spacing: 0.02em;
+    color: white;
+}
+
+.button:hover .techresources-arrow{
+    fill: red;
+    transform: scaleX(1.35);
+} 
+
+.archive-button, .tutorial-button, .manuals-button{
+    margin: 85px 0px 10px 0px;
+    position: relative;
+}
+
+
+.techresources-link{
+    text-decoration: none;
+}
+
+.custom-gradient-bg {
+    background: linear-gradient(to bottom, #E9E9E9, #FFFFFF);
+  }
+
+.text-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+
+.text-container h1{
+    transition: all 0.1s ease-in;
+    margin: 0px 4px 0px 0px;
+    font-style: normal;
+    letter-spacing: 0.25em;
+    font-weight: 700;
+    font-family: 'Oswald Variable', sans-serif;
+    font-size: 38px;
+    min-width: 1.8em;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.techresources-arrow{
+    transition: all 0.1s ease-in;
+    margin: 0px 0px 0px 4px;
+    fill: black;
+    width: 37px;
+    height: 37px;
+}
+
+

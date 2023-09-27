@@ -8,7 +8,6 @@ const pool = new Pool({
     database: 'postgres',
     password: 'AdminABC123',
     port: 5432, //default port for postgresql
-    
 });
 
 
