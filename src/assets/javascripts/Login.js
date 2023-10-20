@@ -3,7 +3,7 @@ import axios from 'axios';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import techSupportlogo from '../images/output-onlinegiftools.gif';
-import '../stylings/supportLogin.css';
+import '../stylings/Login.css';
 import 'bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -39,10 +39,14 @@ function Login() {
       // Handle successful login (if needed)
       // Redirect to another page, e.g., the dashboard
       var user = response.data;
+      console.log(user);
       window.location.href = '/';
     } catch (error) {        
         // Handle failed login (display error message, if needed)
         setErrorMsg('Login Failed: ' + error.response.data.message);
+        setTimeout(() => {
+            setErrorMsg('');
+          }, 10000);
     }
   };
 
@@ -88,7 +92,7 @@ function Login() {
                         <form className='row'>
                             <div className="col">
                                 <button type="submit" className="btn" style={{backgroundColor: 'red', color: 'white'}}>Sign in</button>
-                                <Link className='createtechid' style={{paddingLeft: '20px', textDecoration: 'none', color: 'red'}}>Don't have an account? Click Here!</Link>
+                                <Link to="/signup" className='createtechid' style={{paddingLeft: '20px', textDecoration: 'none', color: 'red'}}>Don't have an account? Click Here!</Link>
                             </div>
                         </form>
                     </div>

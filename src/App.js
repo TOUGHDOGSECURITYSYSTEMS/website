@@ -6,6 +6,9 @@ import Products from './assets/javascripts/Products'; // Import your Products co
 import Support from './assets/javascripts/Support'; // Import your Support component
 import ContactUs from './assets/javascripts/ContactUs'; // Import your ContactUs component
 import Events from './assets/javascripts/Events'; // Import your Events component
+import SignUp from './assets/javascripts/supportSignup';
+import TechSupport from './assets/javascripts/TechSupport';
+
 //import NotFound from './assets/javascripts/NotFound';
 import Login from './assets/javascripts/Login'
 import ScrollToTopOnReload from './components/onPageComponents';
@@ -16,12 +19,14 @@ function App() {
       <ScrollToTopOnReload/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} /> {/* Add About route */}
-        <Route path="/products" element={<Products />} /> {/* Add Products route */}
-        <Route path="/support" element={<Support />} /> {/* Add Support route */}
-        <Route path="/contact" element={<ContactUs />} /> {/* Add ContactUs route */}
-        <Route path="/events" element={<Events />} /> {/* Add Events route */}
-        <Route path="/login" element={<Login />} /> {/* Add Login route */}
+        <Route path="/about" element={<About />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/support" element={<Support />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/techsupport" element={<TechSupport />} />
       </Routes>
     </Router>
   );

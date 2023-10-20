@@ -1,3 +1,4 @@
+//Model Directly talks to/accesses database
 const pool = require('../../config/dbsignIn'); // Import the connection pool from dbConfig.js
 
 

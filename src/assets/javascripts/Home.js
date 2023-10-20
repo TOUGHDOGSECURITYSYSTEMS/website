@@ -6,11 +6,31 @@ import Footer from '../../components/Footer';
 import '../stylings/home.css'
 import logoImage from '../images/dogwhite.png';
 
+const homeStyles = {
+
+  homePage: {
+    display: 'flex',
+    alignItems: 'stretch',
+    justifyContent: 'stretch',
+    flexDirection: 'column',
+    minWidth: 'var(--min-width)',
+    width: '100%',
+  },
+
+  homeContainer: {
+    display: 'block',
+  },
+
+
+
+
+};
+
 function Home() {
   return (
-    <div className='home-page'>
+    <div className='home-page' style={homeStyles.homePage}>
       <Header />
-      <div className='home-container'>
+      <div className='home-container' style={{}}>
         <div className='content-container'>
           <div className='techid-container'>
             <div>

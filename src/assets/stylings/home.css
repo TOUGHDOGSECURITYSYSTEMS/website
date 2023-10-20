@@ -2,27 +2,7 @@
 @import '~@fontsource-variable/oswald';
 
 
-@keyframes fadeInRight {
-    from {
-      opacity: 0;
-      transform: translateX(100px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-}
-  
-@keyframes fadeInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-}
+
   
 .fadeInRight {
     animation: fadeInRight 5s ease forwards;
@@ -30,50 +10,6 @@
   
 .fadeInLeft {
     animation: fadeInLeft 5s ease forwards;
-}
-  
-
-body, html {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    min-width: 980px;
-}
-
-
-
-.home-page{
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
-    margin-left: 0;
-    width: 100%;
-    min-width: inherit;
-    vertical-align: baseline;
-}
-
-.header{
-    position: relative;
-    min-width: 980px;
-}
-
-
-.footer{
-    bottom: 0;
-    position: relative;
-    width: 100%;
-    min-width: 980px;
-    height: 636px;
-}
-
-.home-container{
-    display: block;
-    margin-top: 0;
-    margin-bottom: 0;
-    position: relative;
-    align-self: stretch;
-    grid-area: 3 / 1 / 4 / 2;
 }
 
 .content-container{

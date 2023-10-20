@@ -4,7 +4,7 @@ const routes = require('./routes');
 const cors = require('cors');
 const passport = require('./passport-config');
 const session = require('express-session');
-
+require('dotenv').config();
 
 
 app.use(cors());

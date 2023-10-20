@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import techSupportbackground from '../images/techsupportbackgroundimg.png'
@@ -26,7 +26,7 @@ function Support() {
 
             <div className='logo-container'>
               <div className='techsupport-logo'>
-                <img src={techSupportlogo}></img>
+                <img src={techSupportlogo} alt=''></img>
               </div>
             </div>
             
