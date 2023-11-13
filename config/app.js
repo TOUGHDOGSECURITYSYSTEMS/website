@@ -26,6 +26,7 @@ app.use(passport.session());
 
 //turning on and running server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+const IP_ADDRESS = '192.168.1.106'
+app.listen(PORT, IP_ADDRESS, () => {
+  console.log(`Server is running on http://${IP_ADDRESS}:${PORT}`);
 });

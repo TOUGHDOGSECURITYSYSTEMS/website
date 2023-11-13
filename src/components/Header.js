@@ -39,7 +39,7 @@ function Header() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/techsupport" className="nav-link" onClick={() => handleLinkClick('/techsupport')}>
+              <Link to="/login" className="nav-link" onClick={() => handleLinkClick('/login')}>
                 Tech Support
               </Link>
             </li>
