@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(session({
-  secret: '4Ng?f8@5^>d\J-If9', // Replace with your secret key
+  secret: process.env.SESSION_SECRET, // Replace with your secret key
   resave: false,
   saveUninitialized: true
 }));

@@ -29,13 +29,13 @@ async function sendEmail(req, res){
     const transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-            user: 'support2@tdsecuritysystems.com',
+            user: process.env.EMAIL1,
             pass: process.env.GMAIL_APP_PASSWORD
         },
     });
 
     const mailOptions = {
-        from: 'support2@tdsecuritysystems.com',
+        from: process.env.EMAIL1,
         to,
         subject,
         text,
