@@ -3,12 +3,10 @@ import axios from "axios";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import techSupportlogo from "../images/output-onlinegiftools.gif";
-import "../stylings/Login.css";
 import "bootstrap";
-import { Link, useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 
-function Login({onSuccessfulLogin}) {
-
+function Login({ onSuccessfulLogin }) {
     // Step 1: Set Up State
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
@@ -45,11 +43,15 @@ function Login({onSuccessfulLogin}) {
             var user = response.data;
             console.log(user);
             onSuccessfulLogin();
-            navigate('/dashboard')
-
+            navigate("/dashboard");
         } catch (error) {
             // Handle failed login (display error message, if needed)
-            setErrorMsg("Login Failed: " + (error.response ? error.response.data.message : error.message));
+            setErrorMsg(
+                "Login Failed: " +
+                    (error.response
+                        ? error.response.data.message
+                        : error.message)
+            );
             setTimeout(() => {
                 setErrorMsg("");
             }, 10000);
@@ -66,18 +68,45 @@ function Login({onSuccessfulLogin}) {
                     </div>
                 )}
                 <div className=''></div>
-                <div className='login-container'>
-                    <div className='login-content'>
-                        <div className='login-img'>
+                <div
+                    className='login-container'
+                    style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        height: "600px",
+                        minWidth: "980px",
+                        width: "100%",
+                        alignItems: "center",
+                        justifyContent: "space-evenly",
+                    }}>
+                    <div
+                        className='login-content'
+                        style={{
+                            position: "relative",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            width: "400px",
+                        }}>
                             <img
                                 src={techSupportlogo}
                                 style={{ width: "400px" }}
                                 alt='Tech Support'></img>
-                        </div>
                     </div>
-                    <div className='login-form'>
+                    <div
+                        className='login-form'
+                        style={{
+                            position: "relative",
+                            width: "450px",
+                            minWidth: "365px",
+                        }}>
                         <div onSubmit={handleSubmit}>
-                            <form className='row'>
+                            <form
+                                className='row'
+                                style={{
+                                    width: "100%",
+                                    paddingBottom: "10px",
+                                }}>
                                 <div className='col' id=''>
                                     <label className='form-label'>TechId</label>
                                     <input
@@ -89,7 +118,12 @@ function Login({onSuccessfulLogin}) {
                                         className='form-control'></input>
                                 </div>
                             </form>
-                            <form className='row'>
+                            <form
+                                className='row'
+                                style={{
+                                    width: "100%",
+                                    paddingBottom: "10px",
+                                }}>
                                 <div className='col'>
                                     <label className='form-label'>
                                         Password
@@ -103,12 +137,25 @@ function Login({onSuccessfulLogin}) {
                                         id='password'></input>
                                 </div>
                             </form>
-                            <form className='row'>
+                            <form
+                                className='row'
+                                style={{
+                                    width: "100%",
+                                    paddingBottom: "10px",
+                                }}>
                                 <div className='col'>
                                     <div className='form-check'>
                                         <input
                                             checked={staySignedIn}
                                             onChange={handleStaySignedInChange}
+                                            style={{
+                                                backgroundColor: staySignedIn
+                                                    ? "red"
+                                                    : "white",
+                                                borderColor: staySignedIn
+                                                    ? "red"
+                                                    : "black",
+                                            }}
                                             className='form-check-input'
                                             type='checkbox'
                                             id='gridCheck'></input>
@@ -118,7 +165,12 @@ function Login({onSuccessfulLogin}) {
                                     </div>
                                 </div>
                             </form>
-                            <form className='row'>
+                            <form
+                                className='row'
+                                style={{
+                                    width: "100%",
+                                    paddingBottom: "10px",
+                                }}>
                                 <div className='col'>
                                     <button
                                         type='submit'

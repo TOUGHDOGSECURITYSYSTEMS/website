@@ -1,0 +1,10 @@
+@import '~@fontsource/barlow/200';
+@import '~@fontsource-variable/oswald';
+
+.fadeInRight {
+    animation: fadeInRight 5s ease forwards;
+}
+  
+.fadeInLeft {
+    animation: fadeInLeft 5s ease forwards;
+}

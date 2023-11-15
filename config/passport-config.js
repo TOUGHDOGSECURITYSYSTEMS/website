@@ -13,12 +13,14 @@ passport.use(new LocalStrategy(
     var type = User.manageLogin(username); //check what type of user it is
     console.log(type);
 
+
+    //check if the sign in is an installer
     if (type === 'installer'){
         try {
             //User verification 
             var user = await findUser.getInstaller({username: username});
             console.log(user);
-
+            //Does the user exist
             if (!user){
                 console.log('No User Found');
                 return done(null, false, { message: 'Incorrecet username.'})
@@ -43,7 +45,7 @@ passport.use(new LocalStrategy(
             console.log("Error: " + error);
             
         }
-
+    //check if the sign in is an Dealer
     }else if(type === 'dealer'){
         try {
             //User verification
@@ -72,6 +74,8 @@ passport.use(new LocalStrategy(
         } catch (error) {
             console.log("Error: " + error);
         }
+        
+    //check if the sign in is an distributor
     }else if (type === 'distributor'){
         try {
             //User verification

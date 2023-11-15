@@ -3,7 +3,6 @@ import axios from "axios";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import techSupportlogo from "../images/output-onlinegiftools.gif";
-import "../stylings/signup.css";
 import "bootstrap";
 import { Link } from "react-router-dom";
 
@@ -70,7 +69,6 @@ function SupportSignup() {
     //const [reloadLinks, setReloadLinks] = useState([]); // Maintain a list of links that have been reloaded
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [staySignedIn, setStaySignedIn] = useState(false);
     const [error_msg, setErrorMsg] = useState(""); // Define error_msg state
     //const [city, setCity] = useState('');
     const [selectedState, setSelectedState] = useState("Select a state"); // State dropdown
@@ -81,11 +79,6 @@ function SupportSignup() {
     }
     function handlePasswordChange(event) {
         setPassword(event.target.value);
-    }
-
-    // Step 3: Handle Stay Signed In Checkbox
-    function handleStaySignedInChange(event) {
-        setStaySignedIn(event.target.checked);
     }
 
     // Step 4: Handle Form Submission
@@ -124,7 +117,16 @@ function SupportSignup() {
                         {error_msg}
                     </div>
                 )}
-                <div className='signup-container'>
+                <div
+                    className='signup-container'
+                    style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        minWidth: "980px",
+                        width: "100%",
+                        alignItems: "center",
+                        justifyContent: "space-evenly",
+                    }}>
                     <div className='signup-content'>
                         <div className='signup-img'>
                             <img
@@ -133,113 +135,17 @@ function SupportSignup() {
                                 alt='Tech Support'></img>
                         </div>
                     </div>
-                    <div className='signup-form'>
+                    <div
+                        className='signup-form'
+                        style={{
+                            position: "relative",
+                            width: "450px",
+                            minWidth: "365px",
+                            height: "auto",
+                        }}>
                         <div onSubmit={handleSubmit}>
-                            <form className='row'>
-                                <div className='col' id=''>
-                                    <label className='form-label'>
-                                        Company Name
-                                    </label>
-                                    <input
-                                        name='companyname'
-                                        onChange={handleUserChange}
-                                        type='text'
-                                        id='companyname'
-                                        className='form-control'></input>
-                                </div>
-                            </form>
-                            <form className='row'>
-                                <div className='col'>
-                                    <label className='form-label'>
-                                        Main Contact
-                                    </label>
-                                    <input
-                                        name='maincontact'
-                                        value={password}
-                                        onChange={handlePasswordChange}
-                                        type='password'
-                                        className='form-control'
-                                        id='maincontact'></input>
-                                </div>
-                            </form>
-                            <form className='row'>
-                                <div className='col'>
-                                    <label className='form-label'>
-                                        Contact Email
-                                    </label>
-                                    <input
-                                        name='contactemail'
-                                        value={password}
-                                        onChange={handlePasswordChange}
-                                        type='password'
-                                        className='form-control'
-                                        id='contactemail'></input>
-                                </div>
-                            </form>
-                            <form className='row'>
-                                <div className='col'>
-                                    <label className='form-label'>
-                                        Contact Phone with Area Code
-                                    </label>
-                                    <input
-                                        name='contactphone'
-                                        value={password}
-                                        onChange={handlePasswordChange}
-                                        type='password'
-                                        className='form-control'
-                                        id='password'></input>
-                                </div>
-                            </form>
-                            <form className='row'>
-                                <div className='col'>
-                                    <label className='form-label'>City</label>
-                                    <input
-                                        name='contactcity'
-                                        value={password}
-                                        onChange={handlePasswordChange}
-                                        type='password'
-                                        className='form-control'
-                                        id='password'></input>
-                                </div>
-                            </form>
-                            <form className='row'>
-                                <div className='col'>
-                                    State
-                                    <div
-                                        className='dropdown'
-                                        style={{ width: "200px" }}>
-                                        <button
-                                            id='dropdownButton'
-                                            className='btn btn-secondary dropdown-toggle'
-                                            type='button'
-                                            data-bs-toggle='dropdown'
-                                            aria-expanded='false'>
-                                            {selectedState}
-                                        </button>
-                                        <ul
-                                            className='dropdown-menu'
-                                            style={{
-                                                maxHeight: "150px",
-                                                overflowY: "auto",
-                                            }}>
-                                            {usStates.map((state) => (
-                                                <li key={state}>
-                                                    <a  href="deez"
-                                                        className='dropdown-item'
-                                                        onClick={() =>
-                                                            handleStateSelect(
-                                                                state
-                                                            )
-                                                        }>
-                                                        {state}
-                                                    </a>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </form>
-                            <form className='row'>
+                            
+                            <form className='row' style={{width: '100%', paddingBottom: '10px'}}>
                                 <div className='col'>
                                     <label className='form-label'>
                                         Purchase Location
@@ -254,7 +160,7 @@ function SupportSignup() {
                                 </div>
                             </form>
 
-                            <form className='row'>
+                            <form className='row' style={{width: '100%', paddingBottom: '10px'}}>
                                 <div className='col'>
                                     <label className='form-label'>
                                         Purchase Location
@@ -269,7 +175,7 @@ function SupportSignup() {
                                 </div>
                             </form>
 
-                            <form className='row'>
+                            <form className='row' style={{width: '100%', paddingBottom: '10px'}}>
                                 <div className='col'>
                                     <label className='form-label'>
                                         Main Format
@@ -283,23 +189,7 @@ function SupportSignup() {
                                         id='password'></input>
                                 </div>
                             </form>
-
-                            <form className='row'>
-                                <div className='col'>
-                                    <div className='form-check'>
-                                        <input
-                                            checked={staySignedIn}
-                                            onChange={handleStaySignedInChange}
-                                            className='form-check-input'
-                                            type='checkbox'
-                                            id='gridCheck'></input>
-                                        <label className='form-check-label'>
-                                            Stay Signed In
-                                        </label>
-                                    </div>
-                                </div>
-                            </form>
-                            <form className='row'>
+                            <form className='row' style={{width: '100%', paddingBottom: '10px'}}>
                                 <div className='col'>
                                     <button
                                         type='submit'
