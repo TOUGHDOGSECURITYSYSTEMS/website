@@ -10,10 +10,12 @@ const findUser = require('../src/models/loginModel')
 passport.use(new LocalStrategy(
   async (username, password, done) => {
     
-    var type = User.manageLogin(username); //check what type of user it is
+    var type = "installer"; //check what type of user it is
     console.log(type);
+    console.log(username);
+    console.log(password);
 
-
+    console.log(type === 'installer');
     //check if the sign in is an installer
     if (type === 'installer'){
         try {
@@ -44,65 +46,6 @@ passport.use(new LocalStrategy(
         } catch (error) {
             console.log("Error: " + error);
             
-        }
-    //check if the sign in is an Dealer
-    }else if(type === 'dealer'){
-        try {
-            //User verification
-            var username = parseInt(username); //converting to integer to send proper format into query
-            var user = await findUser.getDealer({username: username});
-            if (!user){
-                console.log('Incorrect Username');
-                return done(null, false, { message: 'Incorrect username.'})
-            }
-
-            try {
-                //password verification
-                var isMatch = await bcrypt.compare(password, user.password);
-                if (isMatch){
-                    console.log('Password Matched');
-                    return done(null, user)
-                } else {
-                    console.log('Password did not match');
-                    return done(null, false, {message: 'Incorrect Password.'})
-                }
-            } catch (error) {
-                console.log("This is the Error: " + error);
-                return done(error, false);
-            }
-
-        } catch (error) {
-            console.log("Error: " + error);
-        }
-        
-    //check if the sign in is an distributor
-    }else if (type === 'distributor'){
-        try {
-            //User verification
-            var username = parseInt(username); //converting to integer to send proper format into query
-            var user = await findUser.getDistributor({username: username});
-            if (!user){
-                console.log('Incorrect Username');
-                return done(null, false, { message: 'Incorrect username.'})
-            }
-
-            try {
-                //password verification
-                var isMatch = await bcrypt.compare(password, user.password);
-                if (isMatch){
-                    console.log('Password Matched');
-                    return done(null, user)
-                } else {
-                    console.log('Password did not match');
-                    return done(null, false, {message: 'Incorrect Password.'})
-                }
-            } catch (error) {
-                console.log("This is the Error: " + error);
-                return done(error, false);
-            }
-
-        } catch (error) {
-            console.log("Error: " + error);
         }
     }else{
         done('Invalid Username Please Try Again');

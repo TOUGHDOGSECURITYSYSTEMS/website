@@ -24,7 +24,7 @@ async function getDealer(username) {
 
 
 async function getInstaller(username){
-  const query = 'SELECT * FROM installer WHERE username = $1';
+  const query = 'SELECT * FROM users WHERE email = $1';
   try {
     const result = await pool.query(query, [username.username]);
     return result.rows[0];
