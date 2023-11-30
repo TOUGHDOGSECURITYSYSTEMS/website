@@ -1,31 +1,14 @@
 const passport = require("passport");
+const loginModel = require("../models/loginModel");
 
 // Function to manage userinput
-function manageLogin(username) {
-    const installer = /-.*[a-zA-Z]/;
-    const client = /^[0-9]+$/;
-
-    if (installer.test(username)) {
-        console.log(installer.test(username));
-        return "installer";
-    } else if (client.test(username)) {
-        const length = username.length;
-
-        if (length == 5) {
-            return "dealer";
-        } else if (length == 3) {
-            return "Distributor";
-        } else {
-            return "Invalid Username Please Try Again";
-        }
-    } else {
-        return "Not a User";
-    }
+function manageLogin(email) {
+    return "installer"
 }
 
 // Function to handle user login
 const loginUser = (req, res, next) => {
-    passport.authenticate("local", async (err, user, info) => {
+    passport.authenticate("local-login", async (err, user, info) => {
         if (err) {
             return next(err);
         }
@@ -36,10 +19,10 @@ const loginUser = (req, res, next) => {
             if (err) {
                 return next(err);
             }
-            // If authentication succeeds, return the user object or any relevant data
+            // If authentication succeeds, return the user object or any relevant datathis 
             return res.status(200).json({ user });
         });
     })(req, res, next);
 };
 
-module.exports = { loginUser, manageLogin };
+module.exports = { loginUser, manageLogin,};

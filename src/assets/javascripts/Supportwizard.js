@@ -3,6 +3,8 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import techSupportlogo from "../images/output-onlinegiftools.gif";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+
 
 var emailData = {
     to: "abner.p@tdsecuritysystems.com",
@@ -45,6 +47,7 @@ function SendEmail(emailDetails) {
 }
 
 function TechSupport() {
+    const navigate = useNavigate();
     const [buttonData, setButtonData] = useState([]);
     const [buttonHistory, setButtonHistory] = useState([]); // Maintain history of buttonData states
     const [ResourceData, setResourceData] = useState([]);
@@ -52,6 +55,12 @@ function TechSupport() {
     const [animate, setAnimate] = useState(false);
 
     useEffect(() => {
+        const jwtToken = localStorage.getItem('jwtToken');
+        if (jwtToken){
+            axios.defaults.headers.common['Authorization'] = 'Bearer ${jwtToken}';
+        }else{
+            navigate("/login");
+        }
         // Fetch data and initialize buttonData state
         async function fetchData() {
             const data = await getData(1); // Assuming ID 1 for initial state
