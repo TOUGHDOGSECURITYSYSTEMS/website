@@ -1,10 +1,5 @@
 const passport = require("passport");
-const loginModel = require("../models/loginModel");
 
-// Function to manage userinput
-function manageLogin(email) {
-    return "installer"
-}
 
 // Function to handle user login
 const loginUser = (req, res, next) => {
@@ -25,4 +20,4 @@ const loginUser = (req, res, next) => {
     })(req, res, next);
 };
 
-module.exports = { loginUser, manageLogin,};
+module.exports = { loginUser,};

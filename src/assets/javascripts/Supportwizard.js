@@ -55,12 +55,6 @@ function TechSupport() {
     const [animate, setAnimate] = useState(false);
 
     useEffect(() => {
-        const jwtToken = localStorage.getItem('jwtToken');
-        if (jwtToken){
-            axios.defaults.headers.common['Authorization'] = 'Bearer ${jwtToken}';
-        }else{
-            navigate("/login");
-        }
         // Fetch data and initialize buttonData state
         async function fetchData() {
             const data = await getData(1); // Assuming ID 1 for initial state

@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import techSupportlogo from "../images/output-onlinegiftools.gif";
 import "bootstrap";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login({ onSuccessfulLogin }) {
     // Step 1: Set Up State
     const navigate = useNavigate();
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [staySignedIn, setStaySignedIn] = useState(false);
     const [error_msg, setErrorMsg] = useState(""); // Define error_msg state
 
     // Step 2: Handle Input Changes
     function handleUserChange(event) {
-        setEmail(event.target.value);
+        setUsername(event.target.value);
     }
 
     function handlePasswordChange(event) {
@@ -33,14 +33,13 @@ function Login({ onSuccessfulLogin }) {
         event.preventDefault();
         try {
             var response = await axios.post("http://192.168.1.106:5000/login", {
-                username: email,
+                username: username,
                 password: password,
                 withCredentials: true,
             });
 
             // Handle successful login (if needed)
             // Redirect to another page, e.g., the dashboard
-            
             var user = response.data;
             console.log(user);
             onSuccessfulLogin();
@@ -68,8 +67,6 @@ function Login({ onSuccessfulLogin }) {
                         {error_msg}
                     </div>
                 )}
-
-                <div className=''></div>
                 <div
                     className='login-container'
                     style={{
@@ -90,10 +87,10 @@ function Login({ onSuccessfulLogin }) {
                             alignItems: "center",
                             width: "400px",
                         }}>
-                        <img
-                            src={techSupportlogo}
-                            style={{ width: "400px" }}
-                            alt='Tech Support'></img>
+                            <img
+                                src={techSupportlogo}
+                                style={{ width: "400px" }}
+                                alt='Tech Support'></img>
                     </div>
                     <div
                         className='login-form'
@@ -112,11 +109,11 @@ function Login({ onSuccessfulLogin }) {
                                 <div className='col' id=''>
                                     <label className='form-label'>TechId</label>
                                     <input
-                                        name='email'
-                                        value={email}
+                                        name='username'
+                                        value={username}
                                         onChange={handleUserChange}
                                         type='text'
-                                        id='email'
+                                        id='username'
                                         className='form-control'></input>
                                 </div>
                             </form>

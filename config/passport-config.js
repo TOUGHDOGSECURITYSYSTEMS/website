@@ -10,9 +10,7 @@ const { getTechID } = require('../src/models/SupportModel');
 // Configure the LocalStrategy for user login
 passport.use('local-login', new LocalStrategy(
   async (username, password, done) => {
-    
-    var type = loginController.manageLogin(username); //check what type of user it is
-
+    var type = 'installer';
     //check if the sign in is an installer
     if (type === 'installer'){
         try {
