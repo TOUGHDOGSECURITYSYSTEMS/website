@@ -1,111 +1,122 @@
-import React, { useState } from "react";
+import React, { useState, } from "react";
 import axios from "axios";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import techSupportlogo from "../images/output-onlinegiftools.gif";
 import "bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function SupportSignup() {
     // Step 1: Set Up State
-    const usStates = [
-        "AK - Alaska",
-        "AL - Alabama",
-        "AR - Arkansas",
-        "AS - American Samoa",
-        "AZ - Arizona",
-        "CA - California",
-        "CO - Colorado",
-        "CT - Connecticut",
-        "DC - District of Columbia",
-        "DE - Delaware",
-        "FL - Florida",
-        "GA - Georgia",
-        "GU - Guam",
-        "HI - Hawaii",
-        "IA - Iowa",
-        "ID - Idaho",
-        "IL - Illinois",
-        "IN - Indiana",
-        "KS - Kansas",
-        "KY - Kentucky",
-        "LA - Louisiana",
-        "MA - Massachusetts",
-        "MD - Maryland",
-        "ME - Maine",
-        "MI - Michigan",
-        "MN - Minnesota",
-        "MO - Missouri",
-        "MS - Mississippi",
-        "MT - Montana",
-        "NC - North Carolina",
-        "ND - North Dakota",
-        "NE - Nebraska",
-        "NH - New Hampshire",
-        "NJ - New Jersey",
-        "NM - New Mexico",
-        "NV - Nevada",
-        "NY - New York",
-        "OH - Ohio",
-        "OK - Oklahoma",
-        "OR - Oregon",
-        "PA - Pennsylvania",
-        "PR - Puerto Rico",
-        "RI - Rhode Island",
-        "SC - South Carolina",
-        "SD - South Dakota",
-        "TN - Tennessee",
-        "TX - Texas",
-        "UT - Utah",
-        "VA - Virginia",
-        "VI - Virgin Islands",
-        "VT - Vermont",
-        "WA - Washington",
-        "WI - Wisconsin",
-        "WV - West Virginia",
-        "WY - Wyoming",
-    ];
-    //const location = useLocation(); // Get the current location
-    //const [reloadLinks, setReloadLinks] = useState([]); // Maintain a list of links that have been reloaded
-    const [username, setUsername] = useState("");
+    const navigate = useNavigate();
+    const [step, setStep] = useState(1);
+    const [techID, setTechID] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [zipcode, setZipCode] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error_msg, setErrorMsg] = useState(""); // Define error_msg state
-    //const [city, setCity] = useState('');
-    const [selectedState, setSelectedState] = useState("Select a state"); // State dropdown
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [error_msg, setErrorMsg] = useState("");
 
     // Step 2: Handle Input Changes
-    function handleUserChange(event) {
-        setUsername(event.target.value);
+    function handleFirstNameChange(event) {
+        setFirstName(event.target.value);
     }
+    function handleZipCode(event) {
+        setZipCode(event.target.value);
+    }
+
+    function handleLastNameChange(event) {
+        setLastName(event.target.value);
+    }
+
+    function handleEmailChange(event) {
+        setEmail(event.target.value);
+    }
+
     function handlePasswordChange(event) {
         setPassword(event.target.value);
     }
 
-    // Step 4: Handle Form Submission
-    const handleSubmit = async (event) => {
+    function handleConfirmPasswordChange(event) {
+        setConfirmPassword(event.target.value);
+    }
+
+    function handleTechIDChange(event) {
+        setTechID(event.target.value);
+    }
+
+    //handle Signup form submission
+    const handleSignupClick = async (event) => {
         event.preventDefault();
+        // Handle signup logic here
+
         try {
-            var response = await axios.post("http://localhost:5000/login", {
-                username: username,
-                password: password,
-                withCredentials: true,
+            //axios post request to see if this email currently exists.
+            var response = await axios.post(
+                "http://192.168.1.106:5000/signup",
+                {
+                    username: email,
+                    password: password,
+                    techID: techID,
+                }
+            );
+
+            var exists = response.data;
+            navigate("/login", {
+                state: {
+                    success_msg:
+                        "Successful Sign up Please verify email to login.",
+                },
             });
-            // Handle successful login (if needed)
-            // Redirect to another page, e.g., the dashboard
-            var user = response.data;
-            console.log(user);
-            window.location.href = "/";
         } catch (error) {
-            // Handle failed login (display error message, if needed)
-            setErrorMsg("Login Failed: " + error.response.data.message);
+            // Extract the error message from the response
+            const errorMessage = error.response
+                ? error.response.data.message
+                : error.message;
+            setErrorMsg("Sign up Failed: " + errorMessage);
             setTimeout(() => {
                 setErrorMsg("");
             }, 10000);
         }
     };
-    // Handle State Select
-    const handleStateSelect = (state) => {
-        setSelectedState(state);
+
+    // Handle Next Form Submission
+    const handleNextClick = async (event) => {
+        event.preventDefault();
+        //check to see if there's any input to begin with.
+        if (!techID || !zipcode) {
+            console.log("wawaw goofy you have no tech id or zipcode");
+        }
+        try {
+            var response = await axios.get("http://192.168.1.106:5000/techID", {
+                params: {
+                    id: techID,
+                    zipcode: zipcode,
+                },
+            });
+            // Handle successful login (if needed)
+            // Redirect to another page, e.g., the dashboard
+
+            var exists = response.data;
+            if (exists.length > 0) {
+                setStep(2);
+                console.log("working");
+            } else {
+                setErrorMsg("Sign Up Failed, Tech ID Does not Exist.");
+                setTimeout(() => {
+                    setErrorMsg("");
+                }, 10000);
+            }
+        } catch (error) {
+            console.log(error.error);
+            // Handle failed login (display error message, if needed)
+            setErrorMsg("Sign Up Failed: " + error);
+            setTimeout(() => {
+                setErrorMsg("");
+            }, 10000);
+        }
     };
 
     return (
@@ -135,84 +146,211 @@ function SupportSignup() {
                                 alt='Tech Support'></img>
                         </div>
                     </div>
-                    <div
-                        className='signup-form'
-                        style={{
-                            position: "relative",
-                            width: "450px",
-                            minWidth: "365px",
-                            height: "auto",
-                        }}>
-                        <div onSubmit={handleSubmit}>
-                            
-                            <form className='row' style={{width: '100%', paddingBottom: '10px'}}>
-                                <div className='col'>
-                                    <label className='form-label'>
-                                        Purchase Location
-                                    </label>
-                                    <input
-                                        name='password'
-                                        value={password}
-                                        onChange={handlePasswordChange}
-                                        type='password'
-                                        className='form-control'
-                                        id='password'></input>
-                                </div>
-                            </form>
+                    {step === 1 && (
+                        <div
+                            className='signup-form'
+                            style={{
+                                position: "relative",
+                                width: "450px",
+                                minWidth: "365px",
+                                height: "auto",
+                            }}>
+                            <div
+                                onSubmit={handleNextClick}
+                                style={{ paddingTop: "10px" }}>
+                                <form
+                                    className='row'
+                                    style={{
+                                        width: "100%",
+                                        paddingBottom: "10px",
+                                    }}>
+                                    <div className='col'>
+                                        <label className='form-label'>
+                                            TechID
+                                        </label>
+                                        <input
+                                            name='techID'
+                                            value={techID}
+                                            onChange={handleTechIDChange}
+                                            type='techID'
+                                            className='form-control'
+                                            id='techID'></input>
+                                    </div>
+                                </form>
 
-                            <form className='row' style={{width: '100%', paddingBottom: '10px'}}>
-                                <div className='col'>
-                                    <label className='form-label'>
-                                        Purchase Location
-                                    </label>
-                                    <input
-                                        name='password'
-                                        value={password}
-                                        onChange={handlePasswordChange}
-                                        type='password'
-                                        className='form-control'
-                                        id='password'></input>
-                                </div>
-                            </form>
-
-                            <form className='row' style={{width: '100%', paddingBottom: '10px'}}>
-                                <div className='col'>
-                                    <label className='form-label'>
-                                        Main Format
-                                    </label>
-                                    <input
-                                        name='password'
-                                        value={password}
-                                        onChange={handlePasswordChange}
-                                        type='password'
-                                        className='form-control'
-                                        id='password'></input>
-                                </div>
-                            </form>
-                            <form className='row' style={{width: '100%', paddingBottom: '10px'}}>
-                                <div className='col'>
-                                    <button
-                                        type='submit'
-                                        className='btn'
-                                        style={{
-                                            backgroundColor: "red",
-                                            color: "white",
-                                        }}>
-                                        Sign up
-                                    </button>
-                                    <Link
-                                        className='createtechid'
-                                        style={{
-                                            paddingLeft: "20px",
-                                            textDecoration: "none",
-                                            color: "red",
-                                        }}>
-                                        Don't have an account? Click Here!
-                                    </Link>
-                                </div>
-                            </form>
+                                <form
+                                    className='row'
+                                    style={{
+                                        width: "100%",
+                                        paddingBottom: "10px",
+                                    }}>
+                                    <div className='col'>
+                                        <label className='form-label'>
+                                            Zip Code
+                                        </label>
+                                        <input
+                                            name='zipcode'
+                                            value={zipcode}
+                                            onChange={handleZipCode}
+                                            type='zipcode'
+                                            className='form-control'
+                                            id='zipcode'></input>
+                                    </div>
+                                </form>
+                                <form
+                                    className='row'
+                                    style={{
+                                        width: "100%",
+                                        paddingBottom: "10px",
+                                    }}>
+                                    <div className='col'>
+                                        <button
+                                            type='next'
+                                            className='btn btn-danger'
+                                            style={{
+                                                width: "100%",
+                                                color: "white",
+                                            }}>
+                                            Next
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                    </div>
+                    )}
+                    {step === 2 && (
+                        <div
+                            className='signup-form'
+                            style={{
+                                position: "relative",
+                                width: "450px",
+                                minWidth: "365px",
+                                height: "auto",
+                            }}>
+                            <div
+                                onSubmit={handleSignupClick}
+                                style={{ paddingTop: "10px" }}>
+                                <form
+                                    className='row'
+                                    style={{
+                                        width: "100%",
+                                        paddingBottom: "10px",
+                                    }}>
+                                    <div className='col'>
+                                        <label className='form-label'>
+                                            First Name
+                                        </label>
+                                        <input
+                                            name='firstname'
+                                            value={firstName}
+                                            onChange={handleFirstNameChange}
+                                            type='firstname'
+                                            className='form-control'
+                                            id='firstname'></input>
+                                    </div>
+                                </form>
+
+                                <form
+                                    className='row'
+                                    style={{
+                                        width: "100%",
+                                        paddingBottom: "10px",
+                                    }}>
+                                    <div className='col'>
+                                        <label className='form-label'>
+                                            Last Name
+                                        </label>
+                                        <input
+                                            name='lastname'
+                                            value={lastName}
+                                            onChange={handleLastNameChange}
+                                            type='lastname'
+                                            className='form-control'
+                                            id='lastname'></input>
+                                    </div>
+                                </form>
+                                <form
+                                    className='row'
+                                    style={{
+                                        width: "100%",
+                                        paddingBottom: "10px",
+                                    }}>
+                                    <div className='col'>
+                                        <label className='form-label'>
+                                            Email
+                                        </label>
+                                        <input
+                                            name='email'
+                                            value={email}
+                                            onChange={handleEmailChange}
+                                            type='email'
+                                            className='form-control'
+                                            id='email'></input>
+                                    </div>
+                                </form>
+
+                                <form
+                                    className='row'
+                                    style={{
+                                        width: "100%",
+                                        paddingBottom: "10px",
+                                    }}>
+                                    <div className='col'>
+                                        <label className='form-label'>
+                                            Password
+                                        </label>
+                                        <input
+                                            name='password'
+                                            value={password}
+                                            onChange={handlePasswordChange}
+                                            type='password'
+                                            className='form-control'
+                                            id='password'></input>
+                                    </div>
+                                </form>
+
+                                <form
+                                    className='row'
+                                    style={{
+                                        width: "100%",
+                                        paddingBottom: "10px",
+                                    }}>
+                                    <div className='col'>
+                                        <label className='form-label'>
+                                            Confirm Password
+                                        </label>
+                                        <input
+                                            name='password-confirm'
+                                            value={confirmPassword}
+                                            onChange={
+                                                handleConfirmPasswordChange
+                                            }
+                                            type='password'
+                                            className='form-control'
+                                            id='password-confirm'></input>
+                                    </div>
+                                </form>
+                                <form
+                                    className='row'
+                                    style={{
+                                        width: "100%",
+                                        paddingBottom: "10px",
+                                    }}>
+                                    <div className='col'>
+                                        <button
+                                            type='submit'
+                                            className='btn btn-danger'
+                                            style={{
+                                                width: "100%",
+                                                color: "white",
+                                            }}>
+                                            Sign up
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
             <Footer />

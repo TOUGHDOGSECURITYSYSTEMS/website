@@ -67,7 +67,6 @@ function Login({ onSuccessfulLogin }) {
                         {error_msg}
                     </div>
                 )}
-                <div className=''></div>
                 <div
                     className='login-container'
                     style={{
