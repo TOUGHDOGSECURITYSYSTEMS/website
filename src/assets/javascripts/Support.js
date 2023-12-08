@@ -7,6 +7,26 @@ import "../stylings/support.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+function sendpostrequest(input) {
+    console.log("entering send email");
+    const sendingtest = async () => {
+        try {
+            // Make a POST request to the sendEmail endpoint
+            const response = await axios.post(
+                "http://192.168.1.106:5000/find-complexity",
+                input
+            );
+
+            // Handle success, e.g., show a success message to the user
+            console.log("Email sent successfully", response.data );
+        } catch (error) {
+            // Handle error, e.g., show an error message to the user
+            console.error("Error sending email:", error);
+        }
+    };
+    sendingtest(input);
+}
+
 
 function Support() {
     const [userinput, setUserInput] = useState("");
@@ -15,40 +35,9 @@ function Support() {
     }
 
     const handleSubmit = async (event) => {
-      event.preventDefault();
-        // Set your OpenAI API key
-        const apiKey = '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';
-
-        // Set the OpenAI endpoint
-        const openaiEndpoint =
-            "https://api.openai.com/v1/engines/gpt-3.5-turbo/completions";
-
-        // Set your prompt
-        const prompt = 'hello';
-
-        // Make a request to the OpenAI API
-        axios
-            .post(
-                openaiEndpoint,
-                {
-                    prompt: prompt,
-                    max_tokens: 50,
-                },
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${apiKey}`,
-                    },
-                }
-            )
-            .then((response) => {
-                // Handle the API response
-                console.log(response.data.choices[0].text.trim());
-            })
-            .catch((error) => {
-                // Handle errors
-                console.error("Error:", error.message);
-            });
+        event.preventDefault();
+        console.log("Making post request");
+        sendpostrequest(userinput);
     };
 
     return (

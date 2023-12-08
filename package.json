@@ -20,7 +20,8 @@
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.2",
     "nodemailer": "^6.9.6",
-    "openai": "^4.0.0",
+    "nodemon": "^3.0.2",
+    "openai": "^4.20.1",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "path-browserify": "^1.0.1",
@@ -36,7 +37,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "dev": "nodemon index.js"
   },
   "eslintConfig": {
     "extends": [

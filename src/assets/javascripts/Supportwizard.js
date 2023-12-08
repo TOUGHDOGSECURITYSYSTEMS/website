@@ -42,7 +42,6 @@ function SendEmail(emailDetails) {
             console.error("Error sending email:", error);
         }
     };
-
     console.log(sendingEmail(emailDetails));
 }
 
