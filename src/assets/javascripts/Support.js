@@ -13,8 +13,8 @@ function sendpostrequest(input) {
         try {
             // Make a POST request to the sendEmail endpoint
             const response = await axios.post(
-                "http://192.168.1.106:5000/find-complexity",
-                input
+                "http://192.168.1.106:5000/googebot",
+                {text: input}
             );
 
             // Handle success, e.g., show a success message to the user
@@ -378,7 +378,6 @@ function Support() {
                     </form>
                 </div>
             </div>
-
             <Footer />
         </div>
     );

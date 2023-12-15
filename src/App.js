@@ -10,7 +10,8 @@ import SignUp from './assets/javascripts/supportSignup';
 import SupportWizard from './assets/javascripts/Supportwizard';
 
 //import NotFound from './assets/javascripts/NotFound';
-import Login from './assets/javascripts/Login'
+import Login from './assets/javascripts/Login';
+import FlowReaderTest from './assets/javascripts/flowreaderTest';
 import ScrollToTopOnReload from './components/onPageComponents';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/techsupport" element={<Login />} />
+        <Route path="/flowreaderTest" element={<FlowReaderTest />} />
         <Route 
           path="/login"
           element={<Login onSuccessfulLogin={handleSuccessfulLogin} />}
