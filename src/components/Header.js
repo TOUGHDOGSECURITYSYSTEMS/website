@@ -28,11 +28,7 @@ function Header() {
                 Home
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/about" className="nav-link" onClick={() => handleLinkClick('/about')}>
-                About
-              </Link>
-            </li>
+
             <li className="nav-item">
               <Link to="/support" className="nav-link" onClick={() => handleLinkClick('/support')}>
                 Support
@@ -43,11 +39,7 @@ function Header() {
                 Tech Support
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/contact" className="nav-link" onClick={() => handleLinkClick('/contact')}>
-                Contact Us
-              </Link>
-            </li>
+
           </ul>
           <form className="d-flex ml-auto">
             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
