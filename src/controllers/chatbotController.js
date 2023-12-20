@@ -8,8 +8,25 @@ const googleModel = new GoogleGenerativeAI(
 
 const openai = new OpenAI({ apiKey: process.env.OPEN_AI_KEY });
 
-async function findComplexity(req, res) {
+async function chatgptbot(req, res) {
+
+
+    //This Try catch loop is for the Assistant
     try {
+        const myAssistant = await openai.beta.assistants.retrieve("asst_k19s58CbCGcnyWLzTbcFVKfn");
+        const message = await openai.beta.threads.messages.create(
+            thread.id, {
+
+        })
+        
+    } catch (error) {
+        
+    }
+
+
+    /** 
+    try {
+        console.log('im here');
         const response = await openai.completions.create({
             model: "gpt-3.5-turbo",
             prompt: req.body.text,
@@ -22,6 +39,7 @@ async function findComplexity(req, res) {
     } catch (error) {
         console.log(error);
     }
+    */
 }
 
 async function googleAIBOT(req, res) {
@@ -62,4 +80,4 @@ async function googleAIBOT(req, res) {
     });
 }
 
-module.exports = { findComplexity, googleAIBOT };
+module.exports = { chatgptbot, googleAIBOT };

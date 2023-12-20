@@ -13,7 +13,7 @@ function sendpostrequest(input) {
         try {
             // Make a POST request to the sendEmail endpoint
             const response = await axios.post(
-                "http://192.168.1.106:5000/googebot",
+                "http://192.168.1.106:5000/chatgptbot",
                 {text: input}
             );
 
