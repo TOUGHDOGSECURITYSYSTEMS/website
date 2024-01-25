@@ -7,7 +7,7 @@ const {
     signUpUser,
 } = require("../src/controllers/SupportController");
 const { loginUser } = require("../src/controllers/loginController");
-const { googleAIBOT, chatgpt } = require('../src/controllers/chatbotController');
+const {  googleAIBOT, chatgptbot } = require('../src/controllers/chatbotController');
 const passport = require("passport");
 
 //# GET REQUESTS
@@ -42,7 +42,7 @@ router.post("/api/sendEmail", sendEmail);
 
 
 //Post for chatgptbot
-router.post('/find-complexity', chatgpt);
+router.post('/chatgptbot', chatgptbot);
 
 router.post('/googebot', googleAIBOT);
 
