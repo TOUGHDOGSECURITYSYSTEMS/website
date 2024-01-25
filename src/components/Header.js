@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logoImage from '../assets/images/WhiteTD.png';
 import './header.css';
+import './styles.css';
 import 'bootstrap';
 
 function Header() {
@@ -31,11 +32,6 @@ function Header() {
             <li className="nav-item">
               <Link to="/about" className="nav-link" onClick={() => handleLinkClick('/about')}>
                 About
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/support" className="nav-link" onClick={() => handleLinkClick('/support')}>
-                Support
               </Link>
             </li>
             <li className="nav-item">

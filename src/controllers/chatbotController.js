@@ -8,7 +8,7 @@ const googleModel = new GoogleGenerativeAI(
 
 const openai = new OpenAI({ apiKey: process.env.OPEN_AI_KEY });
 
-async function findComplexity(req, res) {
+async function chatgpt(req, res) {
     try {
         const response = await openai.completions.create({
             model: "gpt-3.5-turbo",
@@ -62,4 +62,4 @@ async function googleAIBOT(req, res) {
     });
 }
 
-module.exports = { findComplexity, googleAIBOT };
+module.exports = { chatgpt, googleAIBOT };

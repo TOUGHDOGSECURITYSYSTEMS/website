@@ -14,7 +14,7 @@
 .header-navbar{
     border-bottom: 5px red solid;
     background-color: black;
-    min-width: 980px;
+    min-width: device-width;
     width: 100%;
     height: 75px;
     justify-content: center !important;

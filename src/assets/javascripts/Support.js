@@ -13,7 +13,7 @@ function sendpostrequest(input) {
         try {
             // Make a POST request to the sendEmail endpoint
             const response = await axios.post(
-                "http://192.168.1.106:5000/googebot",
+                "http://localhost:5000/googebot",
                 {text: input}
             );
 
@@ -343,7 +343,7 @@ function Support() {
                             width: "50%",
                             paddingBottom: "10px",
                         }}>
-                        <div className='col' id=''>
+                        <div className='col' id='chatbot'>
                             <label className='form-label'>
                                 Please Ask A question
                             </label>

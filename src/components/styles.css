@@ -1,0 +1,11 @@
+:root {
+    --font-0: normal normal normal 28px/1.4em 'Barlow', sans-serif;
+    --font-1: normal normal 500 17px/1.4em 'Oswald Variable', sans-serif;
+    --minViewPortSize: 320;
+    --maxViewPortSize: 1920;
+    --color_0: 255, 254, 254;
+    --column-width: 245px;
+    --column-flex: 245;
+    --min-width: device-width;
+    --transition-1: all 0.2s ease, visibility 0s;
+}
