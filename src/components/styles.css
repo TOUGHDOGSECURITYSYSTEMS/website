@@ -9,3 +9,42 @@
     --min-width: device-width;
     --transition-1: all 0.2s ease, visibility 0s;
 }
+
+.chatbotimage{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    cursor: pointer;
+
+
+    /*Setting the background image for the button*/
+
+}
+
+.chatbot-container{
+    position: fixed;
+    bottom: 35px;
+    right: 30px;
+    width: 50px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid black;
+    overflow-y: auto;
+    transition: transform 0s ease-in-out, height 0s ease-in-out;
+}
+
+
+
+.show-chatbot{
+    width: 300px;
+    height: 400px;
+    z-index: 100;
+}
+
+.minimize-btn{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}

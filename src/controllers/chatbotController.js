@@ -13,22 +13,34 @@ async function chatgptbot(req, res) {
 
     //This Try catch loop is for the Assistant
     try {
+        //console.log('assistant stuff stuff', await openai.beta.assistants.retrieve("asst_k19s58CbCGcnyWLzTbcFVKfn"));
         const myAssistant = await openai.beta.assistants.retrieve("asst_k19s58CbCGcnyWLzTbcFVKfn");
-        const message = await openai.beta.threads.messages.create(
-            thread.id, {
+        const completion = await openai.chat.completions.create({
+            messages: [
+                {"role": "system", "content": myAssistant.instructions},
+                {"role": "user", "content": req.body.text}
 
-        })
-        
+            ],
+            model: myAssistant.model,
+        });
+
+        return res.status(200).json({
+            success: true,
+            data: completion.choices[0].message.content,
+        }); 
     } catch (error) {
+
+        console.log('broke within chatgpt bot thingy', error);
         
     }
+    
 
 
-    /** 
+    /* 
     try {
         console.log('im here');
         const response = await openai.completions.create({
-            model: "gpt-3.5-turbo",
+            model: "gpt-4-1106-preview",
             prompt: req.body.text,
         });
 
@@ -40,6 +52,7 @@ async function chatgptbot(req, res) {
         console.log(error);
     }
     */
+    
 }
 
 async function googleAIBOT(req, res) {
