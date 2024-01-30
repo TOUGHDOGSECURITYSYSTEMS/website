@@ -3,12 +3,13 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import techSupportbackground from '../images/techsupportbackgroundimg.png';
 import techSupportlogo from '../images/techsupportlogo.png';
+import chatdogwhite from '../images/dogwhite.png';
 import chatbotImage from '../images/chatbot.png';
 import '../stylings/support.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-function sendpostrequest(input) {
+function chatgptapiPost(input) {
   console.log('entering send email');
   const sendingtest = async () => {
     try {
@@ -31,14 +32,15 @@ function Support() {
   const [userinput, setUserInput] = useState('');
   const [showChatbot, setShowChatbot] = useState(false);
 
-  function handleUserChange(event) {
+  const handleUserChange = async (event) => {
+    event.preventDefault();
     setUserInput(event.target.value);
-  }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log('Making post request');
-    sendpostrequest(userinput);
+    chatgptapiPost(userinput);
   };
 
   const minimizeChatbot = () => {
@@ -338,58 +340,81 @@ function Support() {
           </div>
         </div>
 
+
+      </div>
+      <div
+        className={`chatbot-container d-flex flex-column justify-content-top ${
+          showChatbot ? 'show-chatbot' : ''
+        }`}>
+        <div
+          className='chatbot-top container'
+          style={{ backgroundColor: 'red', maxHeight: '75px' }}>
+          <div className='row align-items-start' style={{ height: '100%' }}>
+            <div className='col p-0'>
+              <img src={chatdogwhite} alt='Logo' width='auto' height='70px' />
+            </div>
+            <div
+              className='col-auto ml-auto d-flex align-items-center'
+              style={{ height: '100%' }}>
+              <button
+                type='button'
+                className='btn-close btn-close-black'
+                aria-label='Close'
+                onClick={minimizeChatbot}></button>
+            </div>
+          </div>
+        </div>
+        <div
+          className='chatbot-middle container'
+          style={{ overflowY: 'auto', height: '275px' }}>
+          <div className='row'>
+            <div className='col'>User: Hi there!</div>
+          </div>
+          <div className='row'>
+            <div className='col'>Chatbot: Hello! How can I help you today?</div>
+          </div>
+        </div>
+        <div className='chatbot-bottom'>
         <div
           style={{
             display: 'flex',
-            justifyContent: 'center',
-            flexDirection: 'column',
-            alignItems: 'center',
+            justifyContent: 'space-evenly',
+            flexDirection: 'row',
+            alignItems: 'flex-end',
           }}>
           <form
-            className='row'
-            style={{
-              width: '50%',
-              paddingBottom: '10px',
-            }}>
-            <div className='col' id='chatbot'>
-              <label className='form-label'>Please Ask A question</label>
+            className='row p-0' style={{maxWidth: '75%'}}>
+            <div className='col p-0' id='chatbot'>
               <input
                 name='userinput'
                 value={userinput}
                 onChange={handleUserChange}
+                onSubmit={handleSubmit}
                 type='text'
                 id='userinput'
-                className='form-control'></input>
+                className='form-control'
+                placeholder='Type your message here...'></input>
             </div>
           </form>
           <form
             className='row'
-            style={{
-              width: '50%',
-              paddingBottom: '10px',
-              justifyContent: 'center',
-            }}
             onSubmit={handleSubmit}>
-            <div className='col'>
+            <div className='col p-0'>
               <button
                 type='submit'
                 className='btn'
                 style={{
                   backgroundColor: 'red',
                   color: 'white',
+                  height: '40px',
+                  width: '75px',
+
                 }}>
                 Submit
               </button>
             </div>
           </form>
         </div>
-      </div>
-      <div className={`chatbot-container ${showChatbot ? 'show-chatbot' : ''}`}>
-        <div className='minimize-btn' onClick={minimizeChatbot}>
-          -
-        </div>
-        <div className='chatbot-content'>
-          <p>messages from chatbot go here</p>
         </div>
       </div>
       {showChatbot ? null : (
