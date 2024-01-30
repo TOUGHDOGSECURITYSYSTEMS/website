@@ -1,5 +1,16 @@
 @import '~@fontsource/barlow/200';
 @import '~@fontsource-variable/oswald';
+:root {
+    --font-0: normal normal normal 28px/1.4em 'Barlow', sans-serif;
+    --font-1: normal normal 500 17px/1.4em 'Oswald Variable', sans-serif;
+    --minViewPortSize: 320;
+    --maxViewPortSize: 1920;
+    --color_0: 255, 254, 254;
+    --column-width: 245px;
+    --column-flex: 245;
+    --min-width: device-width;
+    --transition-1: all 0.2s ease, visibility 0s;
+}
 
 .fadeInRight {
     animation: fadeInRight 5s ease forwards;
@@ -7,4 +18,36 @@
   
 .fadeInLeft {
     animation: fadeInLeft 5s ease forwards;
+}
+
+.chatbotimage{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    cursor: pointer;
+
+
+    /*Setting the background image for the button*/
+
+}
+
+.chatbot-container{
+    position: fixed;
+    bottom: 35px;
+    right: 30px;
+    width: 0px;
+    height: 0px;
+    background-color: white;
+    border: 1px solid black;
+    overflow-y: auto;
+    transition: transform 0s ease-in-out, height 0s ease-in-out;
+}
+
+
+
+.show-chatbot{
+    width: 300px;
+    height: 400px;
+    z-index: 100;
 }

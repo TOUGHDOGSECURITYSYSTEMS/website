@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import './footer.css';
+import '../assets/stylings/footer.css';
+import '../assets/stylings/generalStyles.css';
 import logoImage from '../assets/images/WhiteTD.png';
 import youtubeImg from '../assets/images/youtubeimg.png';
 import facebookImg from '../assets/images/facebookimg.png';

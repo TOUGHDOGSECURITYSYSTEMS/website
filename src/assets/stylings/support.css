@@ -1,6 +1,3 @@
-@import '~@fontsource/barlow/200';
-@import '~@fontsource-variable/oswald';
-
 @keyframes fadeInRight {
     from {
       opacity: 0;

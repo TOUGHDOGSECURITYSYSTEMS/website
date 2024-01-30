@@ -3,8 +3,6 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import techSupportlogo from "../images/output-onlinegiftools.gif";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-
 
 var emailData = {
     to: "abner.p@tdsecuritysystems.com",
@@ -16,7 +14,7 @@ var emailData = {
 async function getData(id) {
     try {
         const response = await axios.get(
-            `http://192.168.1.106:5000/api/entry/${id}`
+            `http://localhost:5000/api/entry/${id}`
         );
         return response.data; // Return the data from the response
     } catch (error) {
@@ -31,7 +29,7 @@ function SendEmail(emailDetails) {
         try {
             // Make a POST request to the sendEmail endpoint
             await axios.post(
-                "http://192.168.1.106:5000/api/sendEmail",
+                "http://localhost:5000/api/sendEmail",
                 emailDetails
             );
 
@@ -42,12 +40,10 @@ function SendEmail(emailDetails) {
             console.error("Error sending email:", error);
         }
     };
-
     console.log(sendingEmail(emailDetails));
 }
 
 function TechSupport() {
-    const navigate = useNavigate();
     const [buttonData, setButtonData] = useState([]);
     const [buttonHistory, setButtonHistory] = useState([]); // Maintain history of buttonData states
     const [ResourceData, setResourceData] = useState([]);

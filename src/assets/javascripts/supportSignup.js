@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import techSupportlogo from "../images/output-onlinegiftools.gif";
 import "bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function SupportSignup() {
     // Step 1: Set Up State
@@ -54,8 +54,8 @@ function SupportSignup() {
 
         try {
             //axios post request to see if this email currently exists.
-            var response = await axios.post(
-                "http://192.168.1.106:5000/signup",
+            await axios.post(
+                "http://localhost:5000/signup",
                 {
                     username: email,
                     password: password,
@@ -63,7 +63,7 @@ function SupportSignup() {
                 }
             );
 
-            var exists = response.data;
+
             navigate("/login", {
                 state: {
                     success_msg:
@@ -90,7 +90,7 @@ function SupportSignup() {
             console.log("wawaw goofy you have no tech id or zipcode");
         }
         try {
-            var response = await axios.get("http://192.168.1.106:5000/techID", {
+            var response = await axios.get("http://localhost:5000/techID", {
                 params: {
                     id: techID,
                     zipcode: zipcode,
