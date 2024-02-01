@@ -21,110 +21,175 @@ function Footer() {
 
   return (
     <div className='footer'>
-    <div className='footer-container'>
-      <div className='column'>
-        <div className='left-grid grid-container'>
-          <div className='logo-row'>
-            <Link to="/" onClick={() => handleLinkClick('/')}> 
-              <img src={logoImage} alt="Logo" width="195px" height="88px" />
-            </Link>
-          </div>
+      <div
+        className='footer-container'
+        style={{ backgroundColor: 'black', height: '636px' }}>
+        <div
+          className='column'
+          style={{ display: 'grid', borderBottom: 'red 7px solid' }}>
+          <div className='left-grid grid-container' style={{gridColumn: '1', display: 'grid', gridTemplateRows: 'min-content min-content min-content 1fr'}}>
+            <div className='logo-row' style={{margin: '20px 0px 26px 25px'}}>
+              <Link to='/' onClick={() => handleLinkClick('/')}>
+                <img src={logoImage} alt='Logo' width='195px' height='88px' />
+              </Link>
+            </div>
 
-          <div className='search-row'>
-            <form className="d-flex ml-auto">
-              <input className="form-control" type="search" placeholder="Search" aria-label="Search" />
-            </form>
-          </div>
+            <div className='search-row' style={{margin: '0px 0px 29px 25px', width: '220px'}}>
+              <form className='d-flex ml-auto'>
+                <input
+                  className='form-control'
+                  type='search'
+                  placeholder='Search'
+                  aria-label='Search'
+                />
+              </form>
+            </div>
 
-          <div className='links-row'>
-            <ul>
-              <li>
-                <Link to="https://www.youtube.com/channel/UChuK02g9ghGfrWyAJwo362g" width="auto" height="auto"> 
-                  <img src={youtubeImg} alt="Logo" width="auto" height="auto" />
-                </Link>
-              </li>
-              <li>
-                <Link to="https://www.facebook.com/toughdogss/" width="auto" height="auto"> 
-                  <img src={facebookImg} alt="Logo" width="auto" height="auto" />
-                </Link>
-              </li>
-              <li>
-                <Link to="https://www.instagram.com/toughdog_security/" width="auto" height="auto"> 
-                  <img src={instagramImg} alt="Logo" width="auto" height="auto" />
-                </Link>
-              </li>
-              <li>
-                <Link to="https://www.linkedin.com/company/toughdog-security-systems/" width="auto" height="auto"> 
-                  <img src={linkedinImg} alt="Logo" width="auto" height="auto" />
-                </Link>
-              </li>
-            </ul>
+            <div className='links-row' style={{left: '25px', position: 'relative',}}>
+              <ul style={{padding: 0,}}>
+                <li>
+                  <Link
+                    to='https://www.youtube.com/channel/UChuK02g9ghGfrWyAJwo362g'
+                    width='auto'
+                    height='auto'>
+                    <img
+                      src={youtubeImg}
+                      alt='Logo'
+                      width='auto'
+                      height='auto'
+                    />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to='https://www.facebook.com/toughdogss/'
+                    width='auto'
+                    height='auto'>
+                    <img
+                      src={facebookImg}
+                      alt='Logo'
+                      width='auto'
+                      height='auto'
+                    />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to='https://www.instagram.com/toughdog_security/'
+                    width='auto'
+                    height='auto'>
+                    <img
+                      src={instagramImg}
+                      alt='Logo'
+                      width='auto'
+                      height='auto'
+                    />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to='https://www.linkedin.com/company/toughdog-security-systems/'
+                    width='auto'
+                    height='auto'>
+                    <img
+                      src={linkedinImg}
+                      alt='Logo'
+                      width='auto'
+                      height='auto'
+                    />
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className='tag-row' style={{gridArea: '5 / 1 / 6 / 2', position: 'relative', margin: '0 0 37px 25px'}}>
+              <h1 style={{ fontSize: '12px', marginBlock: '0', color: 'white'}}>
+                <span className='tag'>CE TRAINING SCHOOL Y09374001</span>
+                <span className='tag' style={{fontWeight: 200}}>©2023 TOUGHDOG SECURITY SYSTEM</span>
+              </h1>
+            </div>
           </div>
-          <div className='tag-row'>
-            <h1 style={{ fontSize: '12px' }}>
-              <span className='tag1' >
-                CE TRAINING SCHOOL Y09374001
-              </span>
-              <span className='tag2'>
-                ©2023 TOUGHDOG SECURITY SYSTEM      
-              </span>
-            </h1>
-          </div>
-        
-        </div>
-        <div className='right-grid grid-container'>
-          <div className='contactus-row'>
-            <Link to="/contact" className="linkElement" onClick={() => handleLinkClick('/contact')}>
-              <div className='buttonContainer'>
-                <span className='buttonLabel'>
-                  CONTACT US
+          <div
+            className='right-grid grid-container'
+            style={{
+              gridColumn: 2,
+              display: 'grid',
+              height: '558px',
+              gridTemplateRows:
+                'min-content min-content min-content min-content 1fr',
+            }}>
+            <div
+              className='contactus-row'
+              style={{
+                position: 'relative',
+                margin: '24px 0px 29px 0px',
+                left: '5px',
+                width: 'fit-content',
+              }}>
+              <Link
+                to='/contact'
+                className='linkElement'
+                onClick={() => handleLinkClick('/contact')}
+                style={{padding: '3px', transition: 'all 0.2s ease, visibility 0s', textDecoration: 'none', display: 'block'}}>
+                <div className='buttonContainer' style={{transition: 'inherit', display: 'flex', }}>
+                  <span className='buttonLabel' style={{transition: 'inherit', fontFamily: 'Oswald Variable, sans-serif', fontWeight: 500, fontSize: '24px', }}>CONTACT US</span>
+                  <span className='arrow-icon' style={{transition: 'inherit'}}>
+                    <div>
+                      <svg
+                        className='arrow-svg'
+                        xmlns='http://www.w3.org/2000/svg'
+                        viewBox='0 0 200 200'
+                        bbox='9 70.9 181 59'>
+                        <g>
+                          <path d='M159 70.9l-2.2 2.4L183.6 99H9v3h174.6l-26.2 25.3 2.1 2.6 30.5-29.3-31-29.7z'></path>
+                        </g>
+                      </svg>
+                    </div>
+                  </span>
+                </div>
+              </Link>
+            </div>
+            <div className='email-row' style={{position: 'relative', margin:'0 0 30px 9px'}}>
+              <h1 style={{ fontSize: '22px', font: 'var(--font-0)', color: 'rgb(var(--color_0))'}}>
+                <span className='email-text' style={{fontFamily: 'Oswald Variable, sans-serif', letterSpacing: '0.05em', display: 'inherit'}}>
+                  <Link
+                    to='mailto:support@tdsecuritysystems.com'
+                    className='email'>
+                    support@tdsecuritysystems.com
+                  </Link>
+                  <Link
+                    to='mailto:sales@tdsecuritysystems.com'
+                    className='email'>
+                    sales@tdsecuritysystems.com
+                  </Link>
                 </span>
-                <span className='arrow-icon'>
-                  <div>
-                    <svg className='arrow-svg' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' bbox='9 70.9 181 59'>
-                      <g>
-                        <path d='M159 70.9l-2.2 2.4L183.6 99H9v3h174.6l-26.2 25.3 2.1 2.6 30.5-29.3-31-29.7z'></path>
-                      </g>
-                    </svg>
-                  </div>
+              </h1>
+            </div>
+            <div className='location'>
+              <h1>
+                <span className='general-span'>
+                  <span className='red-text'>Pharr, Texas</span>
+                  <span className='white-text'>
+                    1500 Mid Cities Dr, Pharr, TX 78577
+                  </span>
+                  <span className='white-text'>Ph 956-205-1345</span>
                 </span>
-              </div>
-            </Link>
-          </div>
-          <div className='email-row'>
-            <h1 style={{ fontSize: '22px' }}>
-              <span className='email-text'>
-                <Link to='mailto:support@tdsecuritysystems.com' className='email1'>
-                  support@tdsecuritysystems.com
-                </Link>
-                <Link to='mailto:sales@tdsecuritysystems.com' className='email2'>
-                  sales@tdsecuritysystems.com
-                </Link>
-              </span>
-            </h1>
-          </div>
-          <div className='location1'>
-            <h1>
-              <span className='general-span'>
-                <span className='red-text'>Pharr, Texas</span>
-                <span className='white-text'>1500 Mid Cities Dr, Pharr, TX 78577</span>
-                <span className='white-text'>Ph 956-205-1345</span>
-              </span>
-            </h1>
-          </div>
+              </h1>
+            </div>
 
-          <div className='location2'>
-            <h1>
-              <span className='general-span'>
-                <span className='red-text'>San Antonio, Texas</span>
-                <span className='white-text'>403 E Ramsey Rd Suite 203, San Antonio, TX 78216</span>
-                <span className='white-text'>Ph 210-538-6878</span>
-              </span>
-            </h1>
+            <div className='location'>
+              <h1>
+                <span className='general-span'>
+                  <span className='red-text'>San Antonio, Texas</span>
+                  <span className='white-text'>
+                    403 E Ramsey Rd Suite 203, San Antonio, TX 78216
+                  </span>
+                  <span className='white-text'>Ph 210-538-6878</span>
+                </span>
+              </h1>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }

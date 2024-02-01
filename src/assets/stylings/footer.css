@@ -1,180 +1,18 @@
-@keyframes fadeInRight {
-    from {
-      opacity: 0;
-      transform: translateX(100px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-}
-  
-@keyframes fadeInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-}
-
-@keyframes spinAndFadeIn {
-    from {
-        opacity: 0;
-        transform: translateX(100px) rotate(0deg);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0) rotate(360deg);
-    }
-}
-
-
-/*Animation Stuff*/
-  
-.fadeInRight {
-    animation: fadeInRight 5s ease forwards;
-}
-  
-.fadeInLeft {
-    animation: fadeInLeft 5s ease forwards;
-}
-
-
 /*Footer CSS*/
-.footer{
-    bottom: 0;
-    position: block;
-    width: 100%;
-    min-width: var(--min-width);
-    height: 636px;
-}
-
-.footer-container {
-    min-width: var(--min-width);
-    width: 100%;
-    position: inherit;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: black; /* Change this to your desired background color */
-    text-align: center;
-    height: 636px;
-    width: inherit;
-}
-
-.column{
-    display: grid;
-    flex-direction: row;
-    margin: 0 auto;
-    position: block;
-    width: 100%;
-    height: 558px;
-    vertical-align: baseline;
-    border-bottom: red 7px solid;
-    column-gap: 0px;
-    grid-template-columns: 1fr 3fr;
-    gap: 0;
-}
-
-.right-grid{
-    grid-column: 2;
-    position: relative;
-    display: grid;
-    width: 100%;
-    height: auto;
-    min-height: 558px;
-    grid-template-rows: min-content min-content min-content min-content 1fr;
-    grid-template-columns: 100%;
-    vertical-align: baseline;
-    column-width: 735px;
-    overflow: visible;
-}
-
-.contactus-row{
-    width: 308px;
-    height: 40px;
-    position: relative;
-    margin: 24px 0px 29px 0px;
-    left: 9px;
-    grid-area: 1 / 1 / 2 / 2;
-    justify-self: flex-start;
-    align-self: flex-start;
-}
-
 .linkElement:hover .buttonLabel{
     letter-spacing: 0.2em;
     color: red;
 }
 
-.linkElement{
-    transition: all 0.2s ease, visibility 0s;
-    padding: 3px;
-    border-radius: 50px;
-    border: 0px solid rgb(63, 118, 82);
-    background: rgba(63, 118, 82, 0);
-    box-sizing: border-box;
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-    display: block;
-    height: 100%;
-    min-height: 10px;
-    min-width: 10px;
-    touch-action: manipulation;
-    width: 100%;
-    pointer-events: auto;
-
-}
-
-.buttonContainer{
-    transition: inherit;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    display: flex;
-    height: 100%;
-    overflow: hidden;
-    width: 100%;
-    background: transparent;
-    border: 0;
-    margin: 0;
-    padding: 0;
-    vertical-align: baseline;
-}
-
 .buttonLabel{
-    transition: inherit;
-    font-weight: normal;
-    font-style: normal;
-    color: #FFFEFE;
-    font-family: 'Oswald Variable', sans-serif;
-    font-weight: 500;
-    margin: 0;
-    line-height: unset;
+    color: white;
     letter-spacing: 0.3em;
-    font-size: 24px;
-    margin-right: 0px;
-    margin-left: 0px;
-    max-width: 100%;
-    min-width: 1.8em;
-    overflow: hidden;
-    text-align: center;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-
 }
 
 .arrow-icon{
-    transition: inherit;
     fill: #FFFEFE;
-    margin: 0;
     width: 40px;
     height: 40px;
-    flex-shrink: 0;
-    min-width: 1px;
 }
 .linkElement:hover .arrow-icon{
     transform: scaleX(1.2);
@@ -187,98 +25,22 @@
     width: inherit;
 }
 
-.email-row{
-    height: auto;
-    width: 308px;
-    position: relative;
-    margin: 0px 0px 30px 0px;
-    left: 9px;
-    grid-area: 2 / 1 / 3 / 2;
-    justify-self: flex-start;
-    align-self: flex-start;
-    min-height: 67px;
-    overflow-wrap: break-word;
-    text-align: left;
-    letter-spacing: 0em;
-    vertical-align: baseline;
-}
-
-.email-row h1{
-    margin: 0;
-    margin-block: 0;
-    font: var(--font-0);
-    color: rgb(var(--color_0));
-    letter-spacing: 0em;
-}
-
-.email-text{
-    font-family: 'Oswald Variable', sans-serif;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    color: rgb(var(--color_0));
-    display: inherit;
-}
-
-.email1{
+.email{
     color: inherit;
     text-decoration: none;
     display: inherit;
 }
 
-.email2{
-    color: inherit;
-    text-decoration: none;
-    display: inherit;
-}
 
-.location1{
-    height: auto;
-    min-height: 93px;
-    width: 331px;
+.location{
     position: relative;
-    margin: 0px 0px 20px 0px;
-    left: 9px;
-    grid-area: 3 / 1 / 4 / 2;
-    justify-self: flex-start;
-    align-self: flex-start;
+    margin: 0px 0px 20px 9px;
     text-align: left;
-    overflow-wrap: break-word;
 }
 
-.location1 h1{
-    font-size: 22px;
-    margin-block: 0;
-    margin: 0;
+.location h1{
     font: var(--font-0);
     color: rgb(var(--color_0));
-    letter-spacing: 0em;
-    vertical-align: baseline;
-}
-
-.location2{
-    height: auto;
-    min-height: 93px;
-    width: 446px;
-    position: relative;
-    margin: 0px 0px 10px 0px;
-    left: 9px;
-    grid-area: 4 / 1 / 5 / 2;
-    justify-self: flex-start;
-    align-self: flex-start;
-    text-align: left;
-    overflow-wrap: break-word;
-    display: inherit;
-}
-
-
-.location2 h1{
-    font-size: 22px;
-    margin-block: 0;
-    margin: 0;
-    font: var(--font-0);
-    color: rgb(var(--color_0));
-    letter-spacing: 0em;
-    vertical-align: baseline;
 }
 
 .general-span{
@@ -286,21 +48,12 @@
     display: inherit;
 }
 
-.location1 .red-text{
+.location .red-text{
     font-family: 'Oswald Variable', sans-serif;
     letter-spacing: 0.05em;
-    font-weight: 400;
     color: red;
-    display: inherit;
 }
 
-.location2 .red-text{
-    font-family: 'Oswald Variable', sans-serif;
-    letter-spacing: 0.05em;
-    font-weight: 400;
-    color: red;
-    display: inherit;
-}
 
 .white-text{
     display: inherit;
@@ -309,144 +62,18 @@
     font-weight: 200;
 }
 
-
-.left-grid{
-    grid-column: 1;
-    display: grid;
-    grid-template-rows: min-content min-content min-content 1fr;
-    grid-template-columns: 100%;
-    height: auto;
-    min-height: auto;
-    vertical-align: baseline;
-    width: 100%;
-    min-width: 245px;
-    flex: var(--column-flex) 1 0%;
-}
-
-.logo-row{
-    align-self: flex-start;
-    grid-area: 1 / 1 / 2 / 2;
-    height: 88px;
-    justify-self: flex-start;
-    left: 25px;
-    margin: 20px 0px 26px 0px;
-    position: relative;
-    top: auto;
-    width: 195px;
-}
-
-.search-row{
-    align-self: flex-start;
-    grid-area: 2 / 1 / 3 / 2;
-    justify-self: flex-start;
-    left: 25px;
-    position: relative;
-    margin: 0px 0px 29px 0px;
-    vertical-align: baseline;
-    width: 220px;
-
-}
-
-.links-row{
-    align-self: flex-start;
-    display: block;
-    grid-area: 3 / 1 / 4 / 2;
-    justify-self: flex-start;
-    height: 41px;
-    margin: 0px 0px 10px 0px;
-    left: 25px;
-    position: relative;
-    width: 194px;
-}
-
-.links-row ul{
-    height: 100%;
-    padding: 0;
-    position: absolute;
-    white-space: nowrap;
-    width: 100%;
-    list-style: none;
-    margin: 0;
-}
-
 .links-row ul li{
     display: inline-block;
-    height: 41px;
     margin: 0px 10px 0px 0px;
 }
 
-.tag-row{
-    align-self: flex-start;
-    grid-area: 5 / 1 / 6 / 2;
-    height: auto;
-    justify-self: flex-start;
-    position: relative;
-    margin: 0px 0px 37px 0px;
-    left: 25px;
-    width: 238px;
-    overflow-wrap: break-word;
-    text-align: left;
-    direction:var(--text-direction);
-    vertical-align: baseline;
-    letter-spacing: 0em;
-}
-
-.tag-row h1{
-    margin: 0;
-    margin-block: 0;
-    color: rgb(255, 254, 254);
-    letter-spacing: 0em;
-    font: var(--font-0);
-}
-
-.tag1{
+.tag{
     font-family: 'Oswald Variable', sans-serif;
     letter-spacing: 0.05em;
     font-weight: 400;
     font-size: 12px;
     display: inherit;
 }
-
-.tag2{
-    font-family: 'Oswald Variable', sans-serif;
-    letter-spacing: 0.05em;
-    font-size: 12px;
-    display: inherit;
-    font-weight: 200;
-}
-
-/*Home Page CSS*/
-@keyframes fadeInRight {
-    from {
-      opacity: 0;
-      transform: translateX(100px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-}
-  
-@keyframes fadeInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-}
-  
-.fadeInRight {
-    animation: fadeInRight 5s ease forwards;
-}
-  
-.fadeInLeft {
-    animation: fadeInLeft 5s ease forwards;
-}
-
-
 
 .techidlink:hover .techid-label{
     letter-spacing: 0.02em;
