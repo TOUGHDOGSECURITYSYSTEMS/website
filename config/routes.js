@@ -42,9 +42,9 @@ router.post("/api/sendEmail", sendEmail);
 
 
 //Post for chatgptbot
-router.post('/chatgptbot', chatgptbot);
+//router.post('/chatgptbot', chatgptbot);
 
-router.post('/googebot', googleAIBOT);
+//router.post('/googebot', googleAIBOT);
 
 
 // Define more routes as needed
